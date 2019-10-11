@@ -2,7 +2,7 @@
 	background-color: grey;
 	list-style-type: none;	/*removes bullet points*/
 	overflow: hidden;		/*overflow is clipped, but content is visible*/
-	padding: 0;	
+	padding: 0;
 	margin: 0;
 }
 
@@ -32,4 +32,12 @@
 	padding-top: 30px;
 	padding-bottom: 30px;
 	margin-bottom: 30px;
+}
+
+#sectionTitle {
+	font-size: 30px;
+}
+
+#subTitle {
+	font-size: 20px;
 }
