@@ -41,3 +41,17 @@
 #subTitle {
 	font-size: 20px;
 }
+
+.row {
+	display: flex;
+}
+
+.column {
+  flex: 33.33%;
+  padding: 5px;
+}
+
+img {
+    max-width: 300px;
+    max-height: 200px;
+}
