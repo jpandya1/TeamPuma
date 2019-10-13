@@ -108,7 +108,14 @@
 	width: 100%;
 }
 
-
+#map {
+    height: 100%;
+        
+} 
+#map img{
+	max-width: none;
+	max-height: none;
+}
 
 
 
