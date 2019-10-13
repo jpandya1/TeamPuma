@@ -83,8 +83,12 @@
 }
 
 .linkBoxes p {
-	padding: 0px;
-	text-align: center;
+	font-size: 15px;
+	text-align: left;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 .linkBoxes:hover {
