@@ -108,9 +108,19 @@
 	width: 100%;
 }
 
+#map {
+    height: 100%;
+        
+} 
+#map img{
+	max-width: none;
+	max-height: none;
+}
 
-
-
+table, th, td {
+	border: 1px solid black;
+	padding: 10px;
+}
 
 #sectionTitle {
 	font-size: 30px;
