@@ -5,7 +5,6 @@ This will include a calculator to keep track
 of the financial value of the items the user has recycled.
 -->
 	<head>
-<<<<<<< HEAD
 		<title>Financial Calculator </title>
 		<link rel="stylesheet" href="./stylesheet.css">
 
@@ -20,85 +19,6 @@ of the financial value of the items the user has recycled.
     			<li><a href="./about.html">About</a></li>
     		</ul>
     	</div>
-
-    	<div id="titleBanner">
-    		<h1>Green Routine</h1>
-    		<p>Empowering users to recycle responsibly</p>
-    	</div>
-
-
-    	<h2> Common Items to Recycle </h2>
-
-
-		<table id = "table">
-			<tr>
-				<th> Material </th>
-				<th> Cost/lb </th>
-			</tr>
-			<tr>
-				<td> Plastic #1 (Clear Plastic) </td>
-				<td> $1.28 </td>
-			</tr>
-			<tr>
-				<td> Plastic #2 (Opaque Plastic) </td>
-				<td> $0.58 </td>
-			</tr>
-			<tr>
-				<td> Glass </td>
-				<td> $0.10 </td>
-			</tr>
-			<tr>
-				<td> Aluminum </td>
-				<td> $0.30 </td>
-			</tr>
-			<tr>
-				<td> Copper </td>
-				<td> $2.57 </td>
-			</tr>
-			<tr>
-				<td> Cardboard </td>
-				<td> $0.61 </td>
-			</tr>
-			<form action="">
-			Material:<br>
-			<input type = "text" id = "material" />
-			<br>Cost:<br>
-			<input type = "text" id = "cost" />
-			<input type="submit" onclick = "return addRow();" />
-			</form>
-
-			<script>
-				function addRow(){
-					var table = document.getElementById("table");
-					var row = table.insertRow(table.rows.length);
-					var c1 = row.insertCell(0);
-					var c2 = row.insertCell(1);
-					c1.innerHTML = document.getElementById("material").value;
-					c2.innerHTML = "$" + document.getElementById("cost").value;
-					return false;
-				}
-			</script>
-		</table>
-	</body>
-
-
-
-
-=======
-		<meta charset="utf-8">
-		<title>Financial Calculator</title>
-		<link rel="stylesheet" href="./stylesheet.css">
-	</head>
-
-	<body>
-		<div id="navigationBanner">
-			<ul>
-				<li><a href="./splashpage.html" target="_self">Home</a></li>
-				<li><a href="https://www.google.com/" target="_self">Contact</a></li>
-				<li><a href="./about.html" target="_self">About</a></li>
-			</ul>
-		</div>
->>>>>>> fbd1da8bf86e9d879fa0ed7226780af69879202d
 
 		<div id="titleBanner">
 			<h1>Green Routine</h1>
