@@ -4,6 +4,33 @@
         <meta charset="utf-8">
         <title>Carbon Footprint Tracker</title>
         <link rel="stylesheet" href="../stylesheet.css">
+
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="css/util.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+
+        <style>
+            canvas{
+                
+                width:1000px !important;
+                height:500px !important;
+            }
+
+        </style>
+
     </head>
     <body>
 
@@ -20,6 +47,158 @@
     		<p>Empowering users to recycle responsibly</p>
     	</div>
 
-        <h1>Carbon Footprint</h1>
+        <h2 style="text-align: center;">Carbon Footprint Calculator</h2>
+
+
+        <div class="limiter">
+        <div>
+            <div class="wrap-table100">
+                <div class="table100">
+                    <table>
+                        <thead>
+                            <tr class="table100-head">
+                                <th class="column1">Date</th>
+                                <th class="column2">Item</th>
+                                <th class="column3">Category</th>
+                                <th class="column4">Carbon content (grams)</th>
+                                <th class="column5">Quantity</th>
+                                <th class="column6">Total emission (grams)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <tr>
+                                    <td class="column1">10/01/2019</td>
+                                    <td class="column2">Coke Bottle</td>
+                                    <td class="column3">Plastic</td>
+                                    <td class="column4">82.8</td>
+                                    <td class="column5">2</td>
+                                    <td class="column6">165.6</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">10/02/2019</td>
+                                    <td class="column2">DVDs</td>
+                                    <td class="column3">Electronics</td>
+                                    <td class="column4">160</td>
+                                    <td class="column5">3</td>
+                                    <td class="column6">480</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">10/03/2019</td>
+                                    <td class="column2">Aluminum tray</td>
+                                    <td class="column3">Metal</td>
+                                    <td class="column4">400</td>
+                                    <td class="column5">1</td>
+                                    <td class="column6">400</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">10/04/2019</td>
+                                    <td class="column2">Newspaper</td>
+                                    <td class="column3">Paper</td>
+                                    <td class="column4">30</td>
+                                    <td class="column5">3</td>
+                                    <td class="column6">90</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">10/04/2019</td>
+                                    <td class="column2">Coke can</td>
+                                    <td class="column3">Metal</td>
+                                    <td class="column4">82.8</td>
+                                    <td class="column5">1</td>
+                                    <td class="column6">82.8</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">10/06/2019</td>
+                                    <td class="column2">Milk jar</td>
+                                    <td class="column3">Glass</td>
+                                    <td class="column4">200</td>
+                                    <td class="column5">2</td>
+                                    <td class="column6">400</td>
+                                </tr>
+                                <tr>
+                                    <td class="column1">10/10/2019</td>
+                                    <td class="column2">Car Battery</td>
+                                    <td class="column3">Automotive</td>
+                                    <td class="column4">1200</td>
+                                    <td class="column5">1</td>
+                                    <td class="column6">1200</td>
+                                </tr>   
+                                
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div>
+        <br>
+        <h2 style="text-align: center">Your Saved Carbon Emission!</h2>
+        <br>
+    </div>
+
+
+    <canvas id="myChart"></canvas>
+    <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Paper', 'Plastic', 'Electronics', 'Metal', 'Automotive', 'Glass'],
+            datasets: [{
+                label: '# of Votes',
+                data: [4, 7, 2, 1, 1, 2],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            animateRotate: true,
+            animateScale : true
+
+        }
+    });
+    </script>
+
+    <!--===============================================================================================-->  
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+    <script src="js/main.js"></script>
+
+
+
+
+
+
+
+
+
     </body>
 </html>
