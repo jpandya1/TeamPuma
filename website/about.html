@@ -2,20 +2,7 @@
 <html>
     <head>
         <title>About Page</title>
-    	<link rel="stylesheet" href="stylesheet.css">
-
-
-        <style>
-            img
-                {
-                  max-height: 100%;
-                  left: 0;
-                  margin: auto;
-                  max-width: 100%;
-                  max-height: 100%;
-
-                }
-        </style>
+        <link rel="stylesheet" href="stylesheet.css">
     </head>
     <body>
     <!--
@@ -35,26 +22,27 @@
         - Tools: tools used, describe their use
         - Link to Github repository
     -->
-        <div id="navigationBanner">
-    		<ul>
-    			<li><a href="./splashpage.html">Home</a></li>
-    			<li><a href="https://www.google.com/">Contact</a></li>
-    			<li><a class="active" href="./about.html">About</a></li>
-    		</ul>
-    	</div>
+    <div id="navigationBanner">
+        <ul>
+            <li><a href="./splashpage.html" target="_self">Home</a></li>
+            <li><a href="https://www.google.com/" target="_self">Contact</a></li>
+            <li><a href="./about.html" target="_self">About</a></li>
+        </ul>
+    </div>
 
-    	<div id="titleBanner">
-    		<h1>Green Routine</h1>
-    		<p>Empowering users to recycle responsibly</p>
-    	</div>
+    <div id="titleBanner">
+        <div id="titleBannerImage">
+            <img src="images/recycle_image1.png" alt="image0" height="100">
+        </div>
+        <div id="titleBannerText">
+            <h1>Green Routine</h1>
+            <h2>Empowering users to recycle responsibly</h2>
+        </div>
+    </div>
 
-        <title>About - Our Green Routine</title>
-
-        <h1>Our Green Routine</h1>
-
-        <div id="sectionTitle"><u>About</u></div><br>
+        <div id="sectionTitle"><u>Welcome to our About Page</u></div><br>
         <div>
-        Proper recycling techniques prove a prevalent and recurring issue in America today.
+        Improper recycling techniques are a prevalent and recurring issue in America today.
         Our goal at Our Green Routine is to provide users with a service that assists in:
         <ul>
           <li>understanding what products are recyclable</li>
@@ -73,96 +61,94 @@
         <div id="sectionTitle"><u>Overall Statistics</u></div><br>
         <div>
         <ul>
-          <li>Total Number of Commits: </li>
+          <li>Total Number of Commits: 39</li>
           <li>Total Number of Unit Tests: 0/100</li>
-          <li>Total Number of Issues: </li>
+          <li>Total Number of Issues: 12</li>
         </ul>
         </div>
 
         <br><br>
-        <div id="sectionTitle"><u>Meet the Team : Team Puma</u></div><br>
-        Janvi Pandya
-        <br>
+        <div id="sectionTitle"><u>Meet the Team: Team Puma</u></div><br>
+        <p id="memberName">Janvi Pandya</p>
         <figure>
 
-        <img src="./images/Janvi_pic.jpg" alt="JanviPandya" style="width:192px;height:256px;">
+        <img id="memberImage" src="./images/Janvi_pic.jpg" alt="JanviPandya" style="width:192px;height:256px;">
         <figcaption>Janvi is a 4th year Electrical Computer Engineering Major at the University of Texas at Austin with a focus on Software Engineering.
           She enjoys biking, going to concerts, and exploring Austin.</figcaption>
         </figure>
-        <ul>
-        <li>Responsibilities: Web development</li>
-        <li>Number of Commits: </li>
-        <li>Number of Issues: </li>
-        <li>Number of Unit Tests: 0/16</li>
+        <ul id="memberList">
+            <li>Responsibilities: Web development</li>
+            <li>Number of Commits: 8</li>
+            <li>Number of Issues: 1</li>
+            <li>Number of Unit Tests: 0/16</li>
         </ul>
         <br><br>
-        Alan Penichet-Paul
-        <br>
+        <p id="memberName">Alan Penichet-Paul</p>
         <figure>
 
-        <img src="./images/Alan_pic.png" alt="AlanPenichetPaul" style="width:270px;height:270px;">
+        <img id="memberImage" src="./images/Alan_pic.png" alt="AlanPenichetPaul" style="width:270px;height:270px;">
         <figcaption>Alan is a senior ECE student with a focus on Software Engineering and Energy Systems tech cores.
           In his free time, he likes to watch sports, including soccer and college football.</figcaption>
         </figure>
-        <ul>
-        <li>Responsibilities: Software Testing</li>
-        <li>Number of Commits: </li>
-        <li>Number of Issues: </li>
-        <li>Number of Unit Tests: 0/16</li>
+        <ul id="memberList">
+            <li>Responsibilities: Software Testing</li>
+            <li>Number of Commits: 1</li>
+            <li>Number of Issues: 2</li>
+            <li>Number of Unit Tests: 0/16</li>
         </ul>
         <br><br>
-        Donovan McCray
-        <br>
+        <p id="memberName">Donovan McCray</p>
         <figure>
 
-        <img src="./images/Donovan_pic.jpg" alt="DonovanMcCray" style="width:192px;height:256px;">
-        <figcaption>Donovan is an Electrical Computer Engineering Major.</figcaption>
+        <img id="memberImage" src="./images/Donovan_pic.jpg" alt="DonovanMcCray" style="width:192px;height:256px;">
+        <figcaption>Donovan is an ECE student with a focus on software engineering and psychology.
+          In his free time he likes to play video games and listen to podcasts.</figcaption>
         </figure>
-        <ul>
-        <li>Responsibilities: Earth911 JSON API integration</li>
-        <li>Number of Commits: </li>
-        <li>Number of Issues: </li>
-        <li>Number of Unit Tests: 0/16</li>
+        <ul id="memberList">
+            <li>Responsibilities: Earth911 JSON API integration</li>
+            <li>Number of Commits: 1</li>
+            <li>Number of Issues: 4</li>
+            <li>Number of Unit Tests: 0/16</li>
         </ul>
         <br><br>
-        Lauren Jones
-        <br>
+        <p id="memberName">Lauren Jones</p>
         <figure>
-        <img src="images/lauren_pic.jpg" alt="LaurenJones" style="width:192px;height:256px;">
-        <figcaption>Lauren is an Electrical Computer Engineering Major.</figcaption>
+        <img id="memberImage" src="images/lauren_pic.jpg" alt="LaurenJones" style="width:192px;height:256px;">
+        <figcaption>Lauren is a senior ECE student with a focus in software engineering.
+          In her free time, she likes to go running and explore Austin with friends. </figcaption>
         </figure>
-        <ul>
-        <li>Responsibilities:</li>
-        <li>Number of Commits: </li>
-        <li>Number of Issues: </li>
-        <li>Number of Unit Tests: 0/16</li>
+        <ul id="memberList">
+            <li>Responsibilities: Automation</li>
+            <li>Number of Commits: 3</li>
+            <li>Number of Issues: 2</li>
+            <li>Number of Unit Tests: 0/16</li>
         </ul>
         <br><br>
-        Kan Vanthanasuksan
-        <br>
+        <p id="memberName">Kan Vanthanasuksan</p>
         <figure>
 
-        <img src="images/Kan_pic.jpg" alt="KanVanthanasuksan" style="width:192px;height:256px;">
-        <figcaption>Kan is an Electrical Computer Engineering Major.</figcaption>
+        <img id="memberImage" src="images/Kan_pic.jpg" alt="KanVanthanasuksan" style="width:192px;height:256px;">
+        <figcaption>Kan is a senior ECE student and with a focus in Software Engineering and Design.
+          His favorite foods are spicy fried chicken and pad thai.</figcaption>
         </figure>
-        <ul>
-        <li>Responsibilities:</li>
-        <li>Number of Commits: </li>
-        <li>Number of Issues: </li>
-        <li>Number of Unit Tests: 0/16</li>
+        <ul id="memberList">
+            <li>Responsibilities: Web development</li>
+            <li>Number of Commits: 9</li>
+            <li>Number of Issues: 2</li>
+            <li>Number of Unit Tests: 0/16</li>
         </ul>
         <br><br>
-        Indy Vermeersch
-        <br>
+        <p id="memberName">Indy Vermeersch</p>
         <figure>
-        <img src="../pics/Indy_pic.jpg" alt="IndyVermeersch" style="width:192px;height:256px;">
-        <figcaption>Indy is an Electrical Computer Engineering Major.</figcaption>
+        <img id="memberImage" src="./images/Indy_pic.png" alt="IndyVermeersch" style="width:192px;height:256px;">
+        <figcaption>Indy is a senior ECE student with primary focus in electronics and integrated circuits and a secondary focus in software design.
+          In his free time he plays tennis and enjoys listening to podcasts.</figcaption>
         </figure>
-        <ul>
-        <li>Responsibilities:</li>
-        <li>Number of Commits: </li>
-        <li>Number of Issues: </li>
-        <li>Number of Unit Tests: 0/16</li>
+        <ul id="memberList">
+            <li>Responsibilities: Automation</li>
+            <li>Number of Commits: 10</li>
+            <li>Number of Issues: 1</li>
+            <li>Number of Unit Tests: 0/16</li>
         </ul>
 
         <br><br>
