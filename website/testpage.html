@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Test Page</title>
+        <script type="text/javascript" src="jsonparser.js"></script>
+        <link rel="stylesheet" href="stylesheet.css">
+    </head>
+    <body>
+
+        <div id="navigationBanner">
+    		<ul>
+    			<li><a href="./splashpage.html" target="_self">Home</a></li>
+    			<li><a href="https://www.google.com/" target="_self">Contact</a></li>
+    			<li><a href="./about.html" target="_self">About</a></li>
+    			<li><a href="../api/testpage.html">JSON Test Page</a></li>
+    		</ul>
+    	</div>
+
+    	<div id="titleBanner">
+    		<div id="titleBannerImage">
+    			<img src="images/recycle_image1.png" alt="image0" height="100">
+    		</div>
+    		<div id="titleBannerText">
+    			<h1>Green Routine</h1>
+    			<h2>Empowering users to recycle responsibly</h2>
+    		</div>
+    		<!-- <h3>Reduce Reuse Recycle</h3> -->
+    	</div>
+
+        <h1>My Earth911 API Tests</h1>
+        <p id="APIResponse">The API's response goes here.</p>
+        <button type="button" onclick="testRequest()">Test Server Response</button>
+        <button type="button" onclick="getMaterials()">Get Materials!</button>
+        <button type="button" onclick="searchMaterials()">Search for Bottle</button>
+        <button type="button" onclick="reset()">Reset response field</button>
+    </body>
+</html>
