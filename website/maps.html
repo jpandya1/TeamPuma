@@ -9,8 +9,10 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 100%;
-        
+        height: 95%;
+        border: 4px solid black;
+        margin-right: 40px;
+        margin-bottom: 40px;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -89,37 +91,34 @@
         width: 345px;
       }
 
-      /* Split the screen in half */
-		.split {
+		#rightSide {
 		  height: 100%;
-		  width: 50%;
-		  position: fixed;
-		  z-index: 1;
-		  top: 0;
-		  overflow-x: hidden;
+		  width: 60%;
+      float: right;
 		}
 
-		/* Control the left side */
-		.left {
-		  left: 0;
-		}
+    #leftSide {
+      height: 100%;
+      width: 40%;
+      float:left;
+    }
 
-		/* Control the right side */
-		.right {
-		  right: 0;
-		}
+    #mapTitle {
+      text-align: center;
+      margin-top: 0px;
+    }
 
-
-
+    #recyclableItemTable {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+    }
 
     </style>
   </head>
 
   <body>
-
-
-  	<div class="split left">
-
 		<div id="navigationBanner">
 			<ul>
 				<li><a href="./splashpage.html" target="_self">Home</a></li>
@@ -139,7 +138,11 @@
     </div>
 
     
-    	<p>Search Recycling centers by items!</p>
+    <div id="leftSide">
+
+      <h3 id="mapTitle">Use our map tool to search for recycling centers by items!</h3>
+
+    <div id="recyclableItemTable">
 		<table>
             <tr>
                 <th>Recyclable Item</th>
@@ -164,6 +167,7 @@
             </tr>
 
         </table>
+      </div>
 
 
         <script type="text/javascript">
@@ -171,7 +175,7 @@
         </script>
   	</div>
 
-  	<div class="split right">
+  	<div id="rightSide">
   		<input id="pac-input" class="controls" type="text" placeholder="Search Box">
     	<div id="map"></div>
     	<script>
@@ -255,6 +259,11 @@
          async defer></script>
 
   	</div>
+
+
+  <div id="bottomBanner">
+    <p>University of Texas at Austin (October 2019)   .</p>
+  </div>
 
   </body>
 
