@@ -41,7 +41,7 @@
 #titleBannerImage img {
 	background-color: lightgreen;
 	float: left;
-	margin-right: 40px; 
+	margin-right: 40px;
 }
 
 #titleBannerText {
@@ -156,8 +156,8 @@
 
 #map {
     height: 100%;
-        
-} 
+
+}
 #map img{
 	max-width: none;
 	max-height: none;
@@ -181,4 +181,18 @@ table, th, td {
 img {
 	max-width: 300px;
 	max-height: 200px;
+}
+
+/* Used in searchpage.html */
+
+#searchArea {
+	display: block;
+	width: 100%;
+}
+
+#searchInstruction {
+	color: green;
+}
+
+#searchField {
 }

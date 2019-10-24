@@ -1,53 +1,84 @@
+/*
+* https://talk.observablehq.com/t/httprequest-origin-null/121
+* https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+*
+* Apparently there's a problem with the API requests not coming from the Earth911 server.
+* This appears to be an issue with using Javascript for HTTP requests
+*/
+
+CORS_PREFIX = 'https://cors-anywhere.herokuapp.com/';
 BASE_URL = 'http://api.earth911.com/';
 API_KEY = 'c2ab03acf7e440d8';
 
-function query(url) {
-    var req = new XMLHttpRequest();
-    req.open('GET', url, true);
+/*
+* Performs the HTTP Request using the (newer) fetch method
+*/
+function queryFetch(url) {
+    fetch(CORS_PREFIX+url, {mode: 'cors'}).then( resp => {
+        return resp.json();
+    }).then(data => {
 
-    req.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        var myArr = JSON.parse(this.responseText);
-        document.getElementById("APIResponse").innerHTML = myArr[0];
-      }
-    };
+        var response = data;
+        var results = response.result;
 
-    req.send();
+        if (document.getElementById('APIResponseList').hasChildNodes()) {
+            // clear the list of former search results
+            clearSearchList();
+        }
+
+        if (!Array.isArray(results) || !results.length) {
+            // No results were returned for this request
+            document.getElementById("APIResponse").innerHTML = "No items were found for your request.";
+        } else {
+            // Some number of results were returned
+            document.getElementById("APIResponse").innerHTML = " ";
+            
+            // fill in the list with search results
+            document.getElementById('APIResponseList').appendChild(generateList(results));
+            console.log(results);
+        }
+
+    });
 }
 
+/* --- Earth 911 API Calls --- */
 function getMaterials() {
-    query(BASE_URL+'earth911.getMaterials?api_key='+API_KEY);
+    queryFetch(BASE_URL+'earth911.getMaterials?api_key='+API_KEY);
 }
 
 function searchMaterials(material) {
-    query(BASE_URL+'earth911.searchMaterials?api_key='+API_KEY+'&query='+material);
+    queryFetch(BASE_URL+'earth911.searchMaterials?api_key='+API_KEY+'&query='+material);
 }
 
 function searchLocations(lat, long, materialID, maxDistance) {
-    query(BASE_URL+'earth911.searchMaterials?api_key='+API_KEY+'&latitude='+lat+'&longitude='+long+'&materialID='+materialID+'&maxDistance='+maxDistance);
+    queryFetch(BASE_URL+'earth911.searchMaterials?api_key='+API_KEY+'&latitude='+lat+'&longitude='+long+'&materialID='+materialID+'&maxDistance='+maxDistance);
 }
 
 function searchMaterialsByProximity(lat, long) {
-    query(BASE_URL+'earth911.searchMaterials?api_key='+API_KEY+'&latitude='+lat+'&longitude='+long);
+    queryFetch(BASE_URL+'earth911.searchMaterials?api_key='+API_KEY+'&latitude='+lat+'&longitude='+long);
 }
 
-function testRequest() {
-    var req = new XMLHttpRequest();
-    req.open('GET', BASE_URL+'earth911.getMaterials?api_key='+API_KEY, true);
-    // req.open('GET', BASE_URL+'earth911.searchMaterials?api_key='+API_KEY+'&query=bottle', true);
-
-    req.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var myArr = JSON.parse(this.responseText);
-            document.getElementById("APIResponse").innerHTML = myArr[0];
-        } else {
-            document.getElementById("APIResponse").innerHTML = 'State: '+req.readyState+', Status: '+req.status;
-        }
-    };
-
-    req.send();
-}
-
+/* --- Search Page Methods --- */
 function reset() {
     document.getElementById("APIResponse").innerHTML = "The API's response goes here."
+}
+
+function generateList(jsonResults) {
+    // Create the list element:
+    var list = document.createElement('ul');
+    for(var i = 0; i < jsonResults.length; i++) {
+        // Create the list item:
+        var item = document.createElement('li');
+
+        // Set its contents:
+        item.appendChild(document.createTextNode(jsonResults[i].description));
+
+        // Add it to the list:
+        list.appendChild(item);
+    }
+    return list;
+}
+
+function clearSearchList() {
+    document.getElementById('APIResponseList').innerHTML = "";
 }
