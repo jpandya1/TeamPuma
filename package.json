@@ -1,0 +1,19 @@
+{
+  "name": "teampuma",
+  "version": "1.0.0",
+  "description": "Unit Testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpandya1/TeamPuma.git"
+  },
+  "author": "Alan Penichet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jpandya1/TeamPuma/issues"
+  },
+  "homepage": "https://github.com/jpandya1/TeamPuma#readme"
+}
