@@ -47,15 +47,14 @@ function getMaterials() {
 
 function searchMaterials(material) {
     queryFetch(BASE_URL+'earth911.searchMaterials?api_key='+API_KEY+'&query='+material);
-
 }
 
-function searchLocations(lat, long, materialID, maxDistance) {
-    queryFetch(BASE_URL+'earth911.searchMaterials?api_key='+API_KEY+'&latitude='+lat+'&longitude='+long+'&materialID='+materialID+'&maxDistance='+maxDistance);
+function searchLocations(lat, long, maxDistance) {
+    queryFetch(BASE_URL+'earth911.searchLocations?api_key='+API_KEY+'&latitude='+lat+'&longitude='+long+'&maxDistance='+maxDistance);
 }
 
 function searchMaterialsByProximity(lat, long) {
-    queryFetch(BASE_URL+'earth911.searchMaterials?api_key='+API_KEY+'&latitude='+lat+'&longitude='+long);
+    queryFetch(BASE_URL+'earth911.searchMaterialsByProximity?api_key='+API_KEY+'&latitude='+lat+'&longitude='+long);
 }
 
 /* --- Search Page Methods --- */
