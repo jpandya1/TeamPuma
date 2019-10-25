@@ -1,0 +1,56 @@
+<!-- How to recycle glass beverage containers -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Recycle Database</title>
+        <link rel="stylesheet" href="../../stylesheet.css">
+        <script type="text/javascript" src="../jsonparser_database.js"></script>
+        <link rel="stylesheet" href="../pagination_style.css">
+    </head>
+    <body>
+
+        <div id="navigationBanner">
+            <ul>
+                <li><a href="../../splashpage.html" target="_self">Home</a></li>
+                <li><a href="https://www.google.com/" target="_self">Contact</a></li>
+                <li><a href="../../about.html" target="_self">About</a></li>
+    			<li><a href="../../searchpage.html">Search</a></li>
+            </ul>
+        </div>
+
+    <div id="titleBanner">
+        <div id="titleBannerImage">
+            <img src="images/recycle_image1.png" alt="image0" height="100">
+        </div>
+        <div id="titleBannerText">
+            <h1>Green Routine</h1>
+            <h2>Empowering users to recycle responsibly</h2>
+        </div>
+    </div>
+<!-- end of Title Banner (same on all pages)-->
+
+<!-- Each item needs to print out the name of the Material, the types of items that fit under the category
+    and image of the general material (or each type) and a link to an article about how to recycle (+ author name)
+  -->
+    <a href="../glass.html">[Back]</a>
+
+    <h1>Glass Beverage Containers</h1>
+    <form>
+      <button type="button" onclick="searchMaterials('glass')">Click here to find possible types</button>
+      <button type="button" onclick="filter('Beverage')">Click here to filter results</button>
+    </form>
+
+    <p id="APIResponse"></p>
+    <p id="APIResponseList"></p>
+    <p id="APIFilteredList"></p>
+    <p id="TEST"></p>
+
+    <!--
+    <img src="https://cdn.shopify.com/s/files/1/0269/2121/products/Mexi_Coke.jpg?v=1450029154" alt="">
+
+    <h2>Recycle Instructions</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+-->
+    </body>
+</html>

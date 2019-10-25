@@ -32,11 +32,10 @@ function queryFetch(url) {
         } else {
             // Some number of results were returned
             document.getElementById("APIResponse").innerHTML = " ";
-            
+
             // fill in the list with search results
             document.getElementById('APIResponseList').appendChild(generateList(results));
-            console.log(results);
-        }
+            console.log(results);}
 
     });
 }
@@ -48,6 +47,7 @@ function getMaterials() {
 
 function searchMaterials(material) {
     queryFetch(BASE_URL+'earth911.searchMaterials?api_key='+API_KEY+'&query='+material);
+
 }
 
 function searchLocations(lat, long, materialID, maxDistance) {
