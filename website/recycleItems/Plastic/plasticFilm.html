@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Recycle Database</title>
+        <link rel="stylesheet" href="../../stylesheet.css">
+        <script type="text/javascript" src="../jsonparser_database.js"></script>
+        <link rel="stylesheet" href="../pagination_style.css">
+    </head>
+    <body>
+
+        <div id="navigationBanner">
+            <ul>
+                <li><a href="../../splashpage.html" target="_self">Home</a></li>
+                <li><a href="https://www.google.com/" target="_self">Contact</a></li>
+                <li><a href="../../about.html" target="_self">About</a></li>
+    			<li><a href="../../searchpage.html">Search</a></li>
+            </ul>
+        </div>
+
+    <div id="titleBanner">
+        <div id="titleBannerImage">
+            <img src="../../images/recycle_image1.png" alt="image0" height="100">
+        </div>
+        <div id="titleBannerText">
+            <h1>Green Routine</h1>
+            <h2>Empowering users to recycle responsibly</h2>
+        </div>
+    </div>
+<!-- end of Title Banner (same on all pages)-->
+
+    <a href="../plastic.html">[Back]</a><br>
+
+    <h1>Plastic Film</h1>
+    <form>
+      <button type="button" onclick="searchMaterials('Plastic Film')">Click here to find possible types</button>
+      <button type="button" onclick="filter('Plastic')">Click here to filter results</button>
+    </form>
+
+    <p id="APIResponse"></p>
+    <p id="APIResponseList"></p>
+    <p id="APIFilteredList"></p>
+    <p id="TEST"></p>
+
+    </body>
+</html>

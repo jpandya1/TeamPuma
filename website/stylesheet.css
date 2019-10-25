@@ -65,7 +65,7 @@
 
 /* title & navigation banner elements above are used for all pages */
 
-/* splashpage gallery elements are below */
+/* splashpage & recycle database page gallery elements are below */
 
 .galleryOfLinkBoxes {
 	padding-bottom: 30px;
@@ -114,6 +114,31 @@
 }
 
 /* splashpage gallery elements are above */
+
+.databaseGalleryImages {
+	width: 75%; /*sets image width within container*/
+	max-height: 200px;
+	text-align: center;
+
+	display: block; /*these 3 lines help center the images inside each gallery*/
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* recycle database gallery elements are above */
+
+/* more recycle database elements below */
+
+#databaseTitle {
+	margin-left: 30px;
+}
+
+/* #databaseSubTitle {
+	margin-left: 30px;
+	margin-bottom: 30px;
+} */
+
+/* more recycle database elements above */
 
 #bottomBanner p {
 	color: black;
