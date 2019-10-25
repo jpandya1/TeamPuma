@@ -32,7 +32,7 @@ function queryFetch(url) {
         } else {
             // Some number of results were returned
             document.getElementById("APIResponse").innerHTML = " ";
-            
+
             // fill in the list with search results
             document.getElementById('APIResponseList').appendChild(generateList(results));
             console.log(results);
@@ -59,9 +59,6 @@ function searchMaterialsByProximity(lat, long) {
 }
 
 /* --- Search Page Methods --- */
-function reset() {
-    document.getElementById("APIResponse").innerHTML = "The API's response goes here."
-}
 
 function generateList(jsonResults) {
     // Create the list element:
