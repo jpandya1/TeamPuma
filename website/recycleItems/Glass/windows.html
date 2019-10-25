@@ -5,6 +5,8 @@
         <meta charset="utf-8">
         <title>Recycle Database</title>
         <link rel="stylesheet" href="../../stylesheet.css">
+        <script type="text/javascript" src="../jsonparser_database.js"></script>
+        <link rel="stylesheet" href="../pagination_style.css">
     </head>
     <body>
 
@@ -13,7 +15,7 @@
                 <li><a href="../../splashpage.html" target="_self">Home</a></li>
                 <li><a href="https://www.google.com/" target="_self">Contact</a></li>
                 <li><a href="../../../about.html" target="_self">About</a></li>
-    			<li><a href="../../../searchpage.html">Search</a></li>
+    			<li><a href="../../searchpage.html">Search</a></li>
             </ul>
         </div>
 
@@ -29,6 +31,17 @@
 <!-- end of Title Banner (same on all pages)-->
 
     <a href="../glass.html">[Back]</a>
+
+    <h1>Glass Windows</h1>
+    <form>
+      <button type="button" onclick="searchMaterials('glass')">Click here to find possible types</button>
+      <button type="button" onclick="filter('Windows')">Click here to filter results</button>
+    </form>
+
+    <p id="APIResponse"></p>
+    <p id="APIResponseList"></p>
+    <p id="APIFilteredList"></p>
+    <p id="TEST"></p>
 
     </body>
 </html>
