@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Newspaper</title>
+        <link rel="stylesheet" href="../../stylesheet.css">
+        <script type="text/javascript" src="../jsonparser_database.js"></script>
+        <link rel="stylesheet" href="../pagination_style.css">
+    </head>
+    <body>
+
+        <div id="navigationBanner">
+    		<ul>
+    			<li><a href="../../splashpage.html">Home</a></li>
+    			<li><a href="https://www.google.com/">Contact</a></li>
+    			<li><a href="../../about.html">About</a></li>
+    		</ul>
+    	</div>
+
+        <div id="titleBanner">
+            <div id="titleBannerImage">
+                <img src="../../images/recycle_image1.png" alt="image0" height="100">
+            </div>
+            <div id="titleBannerText">
+                <h1>Green Routine</h1>
+                <h2>Empowering users to recycle responsibly</h2>
+            </div>
+        </div>
+
+        <h1>Recycle Database</h1>
+
+        <a href="../paper.html">[Back]</a>
+
+        <h1>Newspaper</h1>
+        <form>
+          <button type="button" onclick="searchMaterials('Newspaper')">Click here to find possible types</button>
+          <button type="button" onclick="filter('Newspaper')">Click here to filter results</button>
+        </form>
+
+        <p id="APIResponse"></p>
+        <p id="APIResponseList"></p>
+        <p id="APIFilteredList"></p>
+        <p id="TEST"></p>
+
+    </body>
+</html>
