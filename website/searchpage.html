@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Test Page</title>
+        <script type="text/javascript" src="./api/jsonparser.js"></script>
+        <link rel="stylesheet" href="stylesheet.css">
+    </head>
+    <body>
+
+        <div id="navigationBanner">
+    		<ul>
+    			<li><a href="./splashpage.html" target="_self">Home</a></li>
+    			<li><a href="https://www.google.com/" target="_self">Contact</a></li>
+    			<li><a href="./about.html" target="_self">About</a></li>
+    			<li><a href="./searchpage.html">Search</a></li>
+    		</ul>
+    	</div>
+
+    	<div id="titleBanner">
+    		<div id="titleBannerImage">
+    			<img src="images/recycle_image1.png" alt="image0" height="100">
+    		</div>
+    		<div id="titleBannerText">
+    			<h1>Green Routine</h1>
+    			<h2>Empowering users to recycle responsibly</h2>
+    		</div>
+    		<!-- <h3>Reduce Reuse Recycle</h3> -->
+    	</div>
+
+        <div id="searchArea">
+            <form>
+                <h2 id="searchInstruction">Search for a material:</h2>
+                <input type="text" id="searchField">
+                <button type="button" onclick="searchMaterials(document.getElementById('searchField').value)">Search</button><br>
+                <button type="button" onclick="reset()">Reset search field</button>
+            </form>
+            <!-- <button type="button" onclick="getMaterials()">Get Materials!</button> -->
+        </div>
+
+        <p id="APIResponse"></p>
+
+        <div id="APIResponseList">
+
+        </div>
+
+    </body>
+</html>
