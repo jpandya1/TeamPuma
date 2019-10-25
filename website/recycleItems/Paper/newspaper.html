@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <title>Newspaper</title>
         <link rel="stylesheet" href="../../stylesheet.css">
+        <script type="text/javascript" src="../jsonparser_database.js"></script>
+        <link rel="stylesheet" href="../pagination_style.css">
     </head>
     <body>
 
@@ -30,10 +32,15 @@
         <a href="../paper.html">[Back]</a>
 
         <h1>Newspaper</h1>
-        <img src="https://images.unsplash.com/photo-1523995462485-3d171b5c8fa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="">
+        <form>
+          <button type="button" onclick="searchMaterials('Newspaper')">Click here to find possible types</button>
+          <button type="button" onclick="filter('Newspaper')">Click here to filter results</button>
+        </form>
 
-        <h2>Recycle Instructions</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p id="APIResponse"></p>
+        <p id="APIResponseList"></p>
+        <p id="APIFilteredList"></p>
+        <p id="TEST"></p>
 
     </body>
 </html>

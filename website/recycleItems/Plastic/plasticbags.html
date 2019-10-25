@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <title>Recycle Database</title>
         <link rel="stylesheet" href="../../stylesheet.css">
+        <script type="text/javascript" src="../jsonparser_database.js"></script>
+        <link rel="stylesheet" href="../pagination_style.css">
     </head>
     <body>
 
@@ -28,7 +30,16 @@
 <!-- end of Title Banner (same on all pages)-->
 
     <a href="../plastic.html">[Back]</a><br>
+    <h1>Plastic Bags</h1>
+    <form>
+      <button type="button" onclick="searchMaterials('bags')">Click here to find possible types</button>
+      <button type="button" onclick="filter('Plastic')">Click here to filter results</button>
+    </form>
 
+    <p id="APIResponse"></p>
+    <p id="APIResponseList"></p>
+    <p id="APIFilteredList"></p>
+    <p id="TEST"></p>
 
 
     </body>
