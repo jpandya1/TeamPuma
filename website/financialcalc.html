@@ -106,10 +106,10 @@ of the financial value of the items the user has recycled.
 			c3.innerHTML = document.getElementById("weightInput").value + " lbs";
 			c4.innerHTML = document.getElementById("costInput").value + "/" + document.getElementById("weightInput").value;
 			if (total == null) {
-				total = parseInt(document.getElementById("costInput").value, 10);
+				total = parseFloat(document.getElementById("costInput").value, 10);
 			}
-			else { 
-				total = total + parseInt(document.getElementById("costInput").value, 10);
+			else {
+				total = total + parseFloat(document.getElementById("costInput").value, 10);
 			}
 			document.getElementById("totalCost").innerHTML = "Total cash return: " + total;
 			return false;
