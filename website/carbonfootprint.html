@@ -5,31 +5,40 @@
         <title>Carbon Footprint Tracker</title>
         <link rel="stylesheet" href="./stylesheet.css">
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+        <script src="https://cdnjs.com/libraries/Chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <style>
+        #data_table {
+          font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
 
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-        <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-    <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="cfresources/vendor/bootstrap/css/bootstrap.min.css">
-    <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="cfresources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="cfresources/vendor/animate/animate.css">
-    <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="cfresources/vendor/select2/select2.min.css">
-    <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="cfresources/vendor/perfect-scrollbar/perfect-scrollbar.css">
-    <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="cfresources/css/util.css">
-        <link rel="stylesheet" type="text/css" href="cfresources/css/main.css">
+        #data_table td, #data_table th {
+          border: 1px solid #ddd;
+          padding: 8px;
+        }
 
-        <style>
-            canvas{
+        #data_table tr:nth-child(even){background-color: #f2f2f2;}
 
-                width:1000px !important;
-                height:500px !important;
-            }
+        #data_table tr:hover {background-color: #ddd;}
 
-        </style>
+        #data_table th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: left;
+          background-color: #4CAF50;
+          color: white;
+        }
+        h1{
+            font-family: "Helvetica";
+            font-weight: bold;
+        }
+
+    </style>
+       
+
 
     </head>
     <body>
@@ -48,167 +57,216 @@
     		<p>Empowering users to recycle responsibly</p>
     	</div>
 
-        <h2>Carbon Footprint Calculator</h2>
+        <h1>Carbon Footprint Calculator</h1>
+        <div id="wrapper">
+            <table align='center' cellspacing=2 cellpadding=5 id="data_table" border=1>
+                <tr>
+                    <th>Item</th>
+                    <th>Carbon content</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                    <th>Total Emission</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
 
+                <tr id="row1">
+                    <td id="name_row1">Coke bottle</td>
+                    <td id="country_row1">82.8</td>
+                    <td id="age_row1">Plastic</td>
+                    <td>2</td>
+                    <td>165.6</td>
+                    <td>10/01/2019</td>
+                    <td>
+                        <input type="button" id="edit_button1" value="Edit" class="edit" onclick="edit_row('1');updateChart();">
+                        <input type="button" id="save_button1" value="Save" class="save" onclick="save_row('1');updateChart();">
+                        <input type="button" value="Delete" class="delete" onclick="delete_row('1');updateChart();">
+                    </td>
+                </tr>
 
-        <div class="limiter">
-        <div>
-            <div class="wrap-table100">
-                <div class="table100">
-                    <table>
-                        <thead>
-                            <tr class="table100-head">
-                                <th class="column1">Date</th>
-                                <th class="column2">Item</th>
-                                <th class="column3">Category</th>
-                                <th class="column4">Carbon content (grams)</th>
-                                <th class="column5">Quantity</th>
-                                <th class="column6">Total emission (grams)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                                <tr>
-                                    <td class="column1">10/01/2019</td>
-                                    <td class="column2">Coke Bottle</td>
-                                    <td class="column3">Plastic</td>
-                                    <td class="column4">82.8</td>
-                                    <td class="column5">2</td>
-                                    <td class="column6">165.6</td>
-                                </tr>
-                                <tr>
-                                    <td class="column1">10/02/2019</td>
-                                    <td class="column2">DVDs</td>
-                                    <td class="column3">Electronics</td>
-                                    <td class="column4">160</td>
-                                    <td class="column5">3</td>
-                                    <td class="column6">480</td>
-                                </tr>
-                                <tr>
-                                    <td class="column1">10/03/2019</td>
-                                    <td class="column2">Aluminum tray</td>
-                                    <td class="column3">Metal</td>
-                                    <td class="column4">400</td>
-                                    <td class="column5">1</td>
-                                    <td class="column6">400</td>
-                                </tr>
-                                <tr>
-                                    <td class="column1">10/04/2019</td>
-                                    <td class="column2">Newspaper</td>
-                                    <td class="column3">Paper</td>
-                                    <td class="column4">30</td>
-                                    <td class="column5">3</td>
-                                    <td class="column6">90</td>
-                                </tr>
-                                <tr>
-                                    <td class="column1">10/04/2019</td>
-                                    <td class="column2">Coke can</td>
-                                    <td class="column3">Metal</td>
-                                    <td class="column4">82.8</td>
-                                    <td class="column5">1</td>
-                                    <td class="column6">82.8</td>
-                                </tr>
-                                <tr>
-                                    <td class="column1">10/06/2019</td>
-                                    <td class="column2">Milk jar</td>
-                                    <td class="column3">Glass</td>
-                                    <td class="column4">200</td>
-                                    <td class="column5">2</td>
-                                    <td class="column6">400</td>
-                                </tr>
-                                <tr>
-                                    <td class="column1">10/10/2019</td>
-                                    <td class="column2">Car Battery</td>
-                                    <td class="column3">Automotive</td>
-                                    <td class="column4">1200</td>
-                                    <td class="column5">1</td>
-                                    <td class="column6">1200</td>
-                                </tr>
+                <tr id="row2">
+                    <td id="name_row2">Milk bottle</td>
+                    <td id="country_row2">160</td>
+                    <td id="age_row2">Glass</td>
+                    <td>2</td>
+                    <td>480</td>
+                    <td>10/02/2019</td>
+                    <td>
+                        <input type="button" id="edit_button2" value="Edit" class="edit" onclick="edit_row('2');updateChart();">
+                        <input type="button" id="save_button2" value="Save" class="save" onclick="save_row('2');updateChart();">
+                        <input type="button" value="Delete" class="delete" onclick="delete_row('2');updateChart();">
+                    </td>
+                </tr>
 
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                <tr id="row3">
+                    <td id="name_row3">Aluminum Tray</td>
+                    <td id="country_row3">400</td>
+                    <td id="age_row3">Metal</td>
+                    <td>1</td>
+                    <td>400</td>
+                    <td>10/01/2019</td>
+                    <td>
+                        <input type="button" id="edit_button3" value="Edit" class="edit" onclick="edit_row('3');updateChart();">
+                        <input type="button" id="save_button3" value="Save" class="save" onclick="save_row('3');updateChart();">
+                        <input type="button" value="Delete" class="delete" onclick="delete_row('3');updateChart();">
+                    </td>
+                </tr>
+
+                <tr id="row4">
+                    <td id="name_row4">Newspaper</td>
+                    <td id="country_row4">30</td>
+                    <td id="age_row4">Paper</td>
+                    <td>3</td>
+                    <td>90</td>
+                    <td>10/05/2019</td>
+                    <td>
+                        <input type="button" id="edit_button4" value="Edit" class="edit" onclick="edit_row('4');updateChart();">
+                        <input type="button" id="save_button4" value="Save" class="save" onclick="save_row('4');updateChart();">
+                        <input type="button" value="Delete" class="delete" onclick="delete_row('4');updateChart();">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><input type="text" id="new_name"></td>
+                    <td><input type="text" id="new_country"></td>
+                    <td><input type="text" id="new_age"></td>
+                    <td><input type="text" id="new_quantity"></td>
+                    <td><input type="text" id="new_emiss"></td>
+                    <td><input type="text" id="new_date"></td>
+                    <td><input type="button" class="add" onclick="add_row();updateChart();" value="Add Row"></td>
+                </tr>
+
+            </table>
         </div>
-    </div>
-
-
-
-
-
-
-
-    <div>
         <br>
-        <h2>Your Saved Carbon Emission!</h2>
         <br>
-    </div>
+        <div>
+            <h1>Your Total Emission Breakdown</h1>
+            <canvas id="pieChart"></canvas>
+
+        </div>
 
 
-    <canvas id="myChart"></canvas>
+    <!-- partial -->
+    <script src="./script.js"></script>
     <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['Automotive', 'Construction', 'Glass', 'Plastic', 'Household Waste', 'Metal', 'Electronics', 'Paper', 'Household'],
-            datasets: [{
-                label: '# of Votes',
-                data: [4, 7, 2, 1, 1, 2, 8, 9, 10],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(245, 55, 245, 0.2)',
-                    'rgba(26, 237, 249, 0.2)',
-                    'rgba(134, 247, 27, 0.2)',
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)',
-                    'rgba(245, 55, 245, 1)',
-                    'rgba(26, 237, 249, 1)',
-                    'rgba(134, 247, 27, 1)',
 
-                    
+        var table = document.getElementById("data_table")
+        var tableLen = table.rows.length
+        var data = {
+            labels: [],
+            population: [],
+            area: []
+        }
 
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            animateRotate: true,
-            animateScale : true
+        for (var i = 1; i < tableLen; i++) {
+            data.labels.push(table.rows[i].cells[0].innerText)
+            data.population.push(table.rows[i].cells[1].innerText)
+            data.area.push(table.rows[i].cells[2].innerText)
+        }
+
+
+
+
+        var canvasP = document.getElementById("pieChart")
+        var ctxP = canvasP.getContext('2d')
+        var chart = new Chart(ctxP, {
+            type: 'pie',
+            data: {
+                labels: data.labels,
+                datasets: [{
+                    data: data.population,
+                    backgroundColor: ["#FFA000", "#1976D2", "#64B5F6", "#FFD54F", "#2196F3", "#FFC107", "#0D47A1"],
+                    hoverBackgroundColor: ["#B2EBF2", "#FFCCBC", "#4DD0E1", "#FF8A65", "#00BCD4", "#FF5722", "#0097A7"]
+                }]
+            },
+            options: {
+                legend: {
+                    display: true,
+                    position: "right"
+                }
+            }
+        });
+
+        function updateChart(){
+            chart.data.labels = data.labels;
+            chart.data.datasets[0].data = data.population;
+            chart.update();
+        };
+
+
+
+            function edit_row(no) {
+            document.getElementById("edit_button" + no).style.display = "none";
+            document.getElementById("save_button" + no).style.display = "block";
+
+            var name = document.getElementById("name_row" + no);
+            var country = document.getElementById("country_row" + no);
+            var age = document.getElementById("age_row" + no);
+
+            var name_data = name.innerHTML;
+            var country_data = country.innerHTML;
+            var age_data = age.innerHTML;
+
+            name.innerHTML = "<input type='text' id='name_text" + no + "' value='" + name_data + "'>";
+            country.innerHTML = "<input type='text' id='country_text" + no + "' value='" + country_data + "'>";
+            age.innerHTML = "<input type='text' id='age_text" + no + "' value='" + age_data + "'>";
+
+        
+        }
+
+        function save_row(no) {
+            var name_val = document.getElementById("name_text" + no).value;
+            var country_val = document.getElementById("country_text" + no).value;
+            var age_val = document.getElementById("age_text" + no).value;
+
+            document.getElementById("name_row" + no).innerHTML = name_val;
+            document.getElementById("country_row" + no).innerHTML = country_val;
+            document.getElementById("age_row" + no).innerHTML = age_val;
+
+            document.getElementById("edit_button" + no).style.display = "block";
+            document.getElementById("save_button" + no).style.display = "none";
+
+            data.labels[no-1] = name_val;
+            data.population[no-1] = country_val;
+            data.area[no-1] = age_val;
+
+
 
         }
-    });
-    </script>
+
+        function delete_row(no) {
+            document.getElementById("row" + no + "").outerHTML = "";
+            data.labels.splice(no-1,1);
+            data.population.splice(no-1,1);
+            data.area.splice(no-1,1);
+        }
+
+        function add_row() {
+            var new_name = document.getElementById("new_name").value;
+            var new_country = document.getElementById("new_country").value;
+            var new_age = document.getElementById("new_age").value;
+            var new_quantity = document.getElementById("new_quantity").value;
+            var new_emiss = document.getElementById("new_emiss").value;
+            var new_date = document.getElementById("new_date").value;
+
+            var table = document.getElementById("data_table");
+            var table_len = (table.rows.length) - 1;
+            var row = table.insertRow(table_len).outerHTML = "<tr id='row" + table_len + "'><td id='name_row" + table_len + "'>" + new_name + "</td><td id='country_row" + table_len + "'>" + new_country + "</td><td id='age_row" + table_len + "'>" + new_age + "</td><td id='quantity_row" + table_len + "'>" + new_quantity + "</td><td id='emiss_row" + table_len + "'>" + new_emiss +  "</td><td id='date_row" + table_len + "'>" + new_date + "</td><td><input type='button' id='edit_button" + table_len + "' value='Edit' class='edit' onclick='edit_row(" + table_len + ")'> <input type='button' id='save_button" + table_len + "' value='Save' class='save' onclick='save_row(" + table_len + ")'> <input type='button' value='Delete' class='delete' onclick='delete_row(" + table_len + ")'></td></tr>";
 
 
-    <!--===============================================================================================-->
-    <script src="cfresources/vendor/jquery/jquery-3.2.1.min.js"></script>
+            data.labels.push(new_name);
+            data.population.push(new_country);
+            data.area.push(new_age);
+
+            document.getElementById("new_name").value = "";
+            document.getElementById("new_country").value = "";
+            document.getElementById("new_age").value = "";
+        }
+</script>
 
 
-<!--===============================================================================================-->
-    <script src="cfresources/vendor/bootstrap/js/popper.js"></script>
-    <script src="cfresources/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-    <script src="cfresources/vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-    <script src="cfresources/js/main.js"></script>
-
-
-
-
-
+       
 
 
 
