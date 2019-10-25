@@ -90,8 +90,12 @@ of the financial value of the items the user has recycled.
 	</body>
 
 	<script>
+
+		var total = 0;
+
 		function addRow() {
 			var table = document.getElementById("calcTable");
+
 			var row = table.insertRow(table.rows.length);
 			var c1 = row.insertCell(0);
 			var c2 = row.insertCell(1);
@@ -102,14 +106,16 @@ of the financial value of the items the user has recycled.
 			c3.innerHTML = document.getElementById("weightInput").value + " lbs";
 			c4.innerHTML = document.getElementById("costInput").value + "/" + document.getElementById("weightInput").value;
 			if (total == null) {
-				var total = parseInt(document.getElementById("costInput").value, 10);
+				total = parseInt(document.getElementById("costInput").value, 10);
 			}
-			else { //FIX: total is always null when function is called
-				var total = total + parseInt(document.getElementById("costInput").value, 10);
+			else { 
+				total = total + parseInt(document.getElementById("costInput").value, 10);
 			}
 			document.getElementById("totalCost").innerHTML = "Total cash return: " + total;
 			return false;
 		}
+
+
 	</script>
 
 </html>
