@@ -142,7 +142,9 @@
         <br>
         <div>
             <h1>Your Total Emission Breakdown</h1>
-            <canvas id="pieChart"></canvas>
+            <div style="height: 700px">
+                <canvas id="pieChart"></canvas>
+            </div>
 
         </div>
 
@@ -181,6 +183,7 @@
                 }]
             },
             options: {
+                maintainAspectRatio: false,
                 legend: {
                     display: true,
                     position: "right"
