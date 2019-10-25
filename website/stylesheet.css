@@ -65,7 +65,7 @@
 
 /* title & navigation banner elements above are used for all pages */
 
-/* splashpage gallery elements are below */
+/* splashpage & recycle database page gallery elements are below */
 
 .galleryOfLinkBoxes {
 	padding-bottom: 30px;
@@ -114,6 +114,31 @@
 }
 
 /* splashpage gallery elements are above */
+
+.databaseGalleryImages {
+	width: 75%; /*sets image width within container*/
+	max-height: 200px;
+	text-align: center;
+
+	display: block; /*these 3 lines help center the images inside each gallery*/
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* recycle database gallery elements are above */
+
+/* more recycle database elements below */
+
+#databaseTitle {
+	margin-left: 30px;
+}
+
+/* #databaseSubTitle {
+	margin-left: 30px;
+	margin-bottom: 30px;
+} */
+
+/* more recycle database elements above */
 
 #bottomBanner p {
 	color: black;
@@ -189,6 +214,52 @@
 
 /* guide page elements are above*/
 
+/* Below are used in financialcalc.html */
+
+#calcInput {
+	float: left;
+	border: 2px solid black;
+	padding: 20px;
+	margin-top: 0px;
+	margin-left: 20px;
+}
+
+#calcTableBox {
+	margin-left: 300px;
+	margin-top: 5px;
+}
+
+#materialInput {
+	margin-bottom: 20px;
+}
+
+#costInput {
+	margin-bottom: 20px;
+}
+
+#weightInput {
+	margin-bottom: 20px;
+}
+
+#submitButton {
+	float: inherit;
+}
+
+#totalCost {
+	margin-left: 300px;
+}
+
+#calcTitle {
+	margin-left: 20px;
+}
+
+#calcSubTitle {
+	margin-left: 20px;
+	margin-bottom: 5px;
+}
+
+/* Above are used in the financialcalc.html */
+
 #map {
     height: 100%;
 
@@ -203,7 +274,7 @@ table, th, td {
 	padding: 10px;
 }
 
-/* Used in searchpage.html */
+/* Below are used in searchpage.html */
 
 #searchArea {
 	display: block;
@@ -216,3 +287,5 @@ table, th, td {
 
 #searchField {
 }
+
+/*Above are used in searchpage.html */
