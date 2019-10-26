@@ -161,7 +161,7 @@ of the financial value of the items the user has recycled.
 		}*/
 
 		function delete_row(num) {
-			total = total - parseFloat(document.getElementById("row" + num + "").childNodes[1].value, 10);
+			total = total - parseFloat(document.getElementById("row" + num).cells[1].innerHTML, 2);
 			document.getElementById("totalCost").innerHTML = "Total cash return: $" + total;				//FIX: deletion causes NaN
 
 			document.getElementById("row" + num + "").outerHTML = "";
