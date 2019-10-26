@@ -144,33 +144,28 @@
 
       <h3 id="mapTitle">Use our map tool to search for recycling centers by items!</h3>
 
-    <div id="recyclableItemTable">
 
-		<table>
-            <tr>
-                <th>Recyclable Item</th>
-            </tr>
-            <tr>
-                <td><a href="./recycleItems/aluminumcan.html">Aluminum Can</a></td>
-            </tr>
-            <tr>
-                <td><a href="./recycleItems/cardboardbox.html">Cardboard Box</a></td>
-            </tr>
-            <tr>
-                <td><a href="./recycleItems/glassbottle.html">Glass Bottle</a></td>
-            </tr>
-            <tr>
-                <td><a href="./recycleItems/newspaper.html">Newspaper</a></td>
-            </tr>
-            <tr>
-                <td><a href="./recycleItems/milkjug.html">Milk Jug</a></td>
-            </tr>
-            <tr>
-                <td><a href="./recycleItems/scrapmetal.html">Scrap Metal</a></td>
-            </tr>
+        <div id="formatted-address">address</div>
 
-        </table>
-      </div>
+
+        <div id="searchLocations">
+            <form>
+                <h2 id="searchInstruction">Search for centers:</h2>
+                <input type="text" id="searchField">
+                <button type="button" onclick="geocode()">Search</button>
+
+            </form>
+        </div>
+
+        <p id="APIResponse">Response</p>
+
+        <div id="APIResponseList">Response list</div>
+
+        <div id="hello"></div>
+
+
+
+
 
 
         <script type="text/javascript">
@@ -258,6 +253,47 @@
       }
 
     </script>
+
+     <script>
+            //call geocode
+            function geocode(){
+                var location = document.getElementById('searchField').value;
+                axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
+                    params:{
+                        address:location,
+                        key:'AIzaSyC1tYYqGdNtn_Re-u4X4ldatpcQ6sKoFsQ'
+                    }
+                })
+                .then(function(response){
+                    //log full response
+                    console.log(response);
+
+                    //formatted address
+                var formattedAddress = response.data.results[0].formatted_address;
+                var lat = response.data.results[0].geometry.location.lat;
+                var lng = response.data.results[0].geometry.location.lng;
+
+                var formattedAddressOutput = `
+                  <ul class="list-group">
+                    <li class="list-group-item">${formattedAddress}</li>
+                  </ul>
+                `;
+                    //output to app
+                    document.getElementById('formatted-address').innerHTML = formattedAddressOutput;
+
+                    searchLocations(lat, lng);
+
+                })
+                .catch(function(error){
+                    console.log(error);
+                });
+
+
+                
+            }
+
+        </script>
+        
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1tYYqGdNtn_Re-u4X4ldatpcQ6sKoFsQ&libraries=places&callback=initAutocomplete"
          async defer></script>
 
