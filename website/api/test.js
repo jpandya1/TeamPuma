@@ -41,7 +41,7 @@ it('Parser reset works as expected', () => {
     assert.equal(elementContent, "The API's response goes here.");
 	})
 //6
-it('Correctly accepts keys', () => {
+it('No return for random string', () => {
 //call getmaterials for some random, make sure empty
 	parser.searchMaterials("randomstring");
 	var myList = searchpage.findElement(webdriver.By.id('APIResponseList'));
@@ -49,38 +49,62 @@ it('Correctly accepts keys', () => {
 	assertTrue(elementContent.size() === 0);
 	})
 //7
-it('Correctly accepts keys', () => {
+it('Correctly searches for aluminum', () => {
 //getmaterials for aluminum
+	parser.searchMaterials("Aluminum");
+	var myList = searchpage.findElement(webdriver.By.id('APIResponseList'));
+	var elementContent = myList.getText();
+	assertTrue(elementContent.size() > 0);
 
 	})
 //8
-it('Correctly accepts keys', () => {
+it('Correctly searches for paper', () => {
 //get materials for paper
+	parser.searchMaterials("Paper");
+	var myList = searchpage.findElement(webdriver.By.id('APIResponseList'));
+	var elementContent = myList.getText();
+	assertTrue(elementContent.size() > 0);
 
 	})
 //9
-it('Correctly accepts keys', () => {
+it('Correctly returns empty list when searching numbers', () => {
 // get materials for numbers
-
+	parser.searchMaterials('123');
+	var myList = searchpage.findElement(webdriver.By.id('APIResponseList'));
+	var elementContent = myList.getText();
+	assertTrue(elementContent.size() === 0);
 	})
 //10
-it('Correctly accepts keys', () => {
+it('Handles empty string search', () => {
 //getmaterials with empty string
+	parser.searchMaterials('');
+	var myList = searchpage.findElement(webdriver.By.id('APIResponseList'));
+	var elementContent = myList.getText();
+	assertTrue(elementContent.size() === 0);
 
 	})
 //11
-it('Correctly accepts keys', () => {
-
+it('returns results for all lowercase', () => {
+	parser.searchMaterials('aluminum');
+	var myList = searchpage.findElement(webdriver.By.id('APIResponseList'));
+	var elementContent = myList.getText();
+	assertTrue(elementContent.size() > 0);
 
 	})
 //12
-it('Correctly accepts keys', () => {
-
+it('returns results for all uppercase', () => {
+	parser.searchMaterials('ALUMINUM');
+	var myList = searchpage.findElement(webdriver.By.id('APIResponseList'));
+	var elementContent = myList.getText();
+	assertTrue(elementContent.size() > 0);
 
 	})
 //13
-it('Correctly accepts keys', () => {
-
+it('returns results for alternating case', () => {
+	parser.searchMaterials('AlUmInUm');
+	var myList = searchpage.findElement(webdriver.By.id('APIResponseList'));
+	var elementContent = myList.getText();
+	assertTrue(elementContent.size() > 0);
 
 	})
 //14
