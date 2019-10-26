@@ -148,43 +148,66 @@ it('Correctly fails lat long with only lay', () => {
 
 	})
 //19
-it('Correctly accepts keys', () => {
-
-
+it('Correctly clears search list', () => {
+	parser.searchMaterialsByProximity('30.2672');
+	var myList = searchpage.findElement(webdriver.By.id('APIResponseList'));
+	var elementContent = myList.getText();
+	assertTrue(elementContent.size() > 0);
+	parser.clearSearchList();
+	var elementContent = myList.getText();
+	assertTrue(elementContent.size() === 0);
 	})
 //20
-it('Correctly accepts keys', () => {
+it('Correctly filters', () => {
+	parser.searchMaterials('aluminum');
+	parser.filter('aluminum');
+	var myList = searchpage.findElement(webdriver.By.id('APIFilteredList'));
+	var elementContent = myList.getText();
+	assertTrue(elementContent.size() > 0);
 
 
 	})
 //21
-it('Correctly accepts keys', () => {
-
+it('Correctly does not filter invalid input', () => {
+	parser.searchMaterials('dogcat');
+	parser.filter('aluminum');
+	var myList = searchpage.findElement(webdriver.By.id('APIFilteredList'));
+	var elementContent = myList.getText();
+	assertTrue(elementContent.size() === 0);
 
 	})
 //22
-it('Correctly accepts keys', () => {
-
+it('Correctly blanks test element', () => {
+	parser.searchMaterials('paper');
+	parser.filter('paper');
+	var myList = searchpage.findElement(webdriver.By.id('TEST'));
+	var elementContent = myList.getText();
+	assertTrue(elementContent.size() === 0);
 
 	})
 //23
-it('Correctly accepts keys', () => {
-
+it('Correctly does not blank test when invalid input', () => {
+	parser.searchMaterials('paper');
+	parser.filter('12742061');
+	var myList = searchpage.findElement(webdriver.By.id('TEST'));
+	var elementContent = myList.getText();
+	assertTrue(elementContent.size() > 0);
 
 	})
 //24
-it('Correctly accepts keys', () => {
-
+it('Correctly searches locations', () => {
+	parser.searchLocations('30.2672, 97.7431, paper, 50');
+	var myList = searchpage.findElement(webdriver.By.id('APIResponseList'));
+	var elementContent = myList.getText();
+	assertTrue(elementContent.size() > 0);
 
 	})
 //25
-it('Correctly accepts keys', () => {
-
-
-	})
-
-it('Correctly accepts keys', () => {
-
+it('Correctly fails searchLocations api call with invalid inputs', () => {
+	parser.searchLocations('a, b, c, d');
+	var myList = searchpage.findElement(webdriver.By.id('APIResponseList'));
+	var elementContent = myList.getText();
+	assertTrue(elementContent.size() === 0);
 
 	})
-
+\\
