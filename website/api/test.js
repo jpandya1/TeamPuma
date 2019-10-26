@@ -108,28 +108,43 @@ it('returns results for alternating case', () => {
 
 	})
 //14
-it('Correctly accepts keys', () => {
-
+it('Correctly accepts latitude and longitude search', () => {
+	parser.searchMaterialsByProximity('30.2672, 97.7431');
+	var myList = searchpage.findElement(webdriver.By.id('APIResponseList'));
+	var elementContent = myList.getText();
+	assertTrue(elementContent.size() > 0);
 
 	})
 //15
-it('Correctly accepts keys', () => {
-
+it('Correctly returns no materials for invalid lat long', () => {
+	parser.searchMaterialsByProximity('cat, dog');
+	var myList = searchpage.findElement(webdriver.By.id('APIResponseList'));
+	var elementContent = myList.getText();
+	assertTrue(elementContent.size() > 0);
 
 	})
 //16
-it('Correctly accepts keys', () => {
-
+it('Correctly returns empty list for empty lat long', () => {
+	parser.searchMaterialsByProximity('');
+	var myList = searchpage.findElement(webdriver.By.id('APIResponseList'));
+	var elementContent = myList.getText();
+	assertTrue(elementContent.size() === 0);
 
 	})
 //17
-it('Correctly accepts keys', () => {
-
+it('Correctly fails api call with extra params', () => {
+	parser.searchMaterialsByProximity('cat, dog, dog');
+	var myList = searchpage.findElement(webdriver.By.id('APIResponseList'));
+	var elementContent = myList.getText();
+	assertTrue(elementContent.size() > 0);
 
 	})
 //18
-it('Correctly accepts keys', () => {
-
+it('Correctly fails lat long with only lay', () => {
+	parser.searchMaterialsByProximity('30.2672');
+	var myList = searchpage.findElement(webdriver.By.id('APIResponseList'));
+	var elementContent = myList.getText();
+	assertTrue(elementContent.size() > 0);
 
 	})
 //19
