@@ -54,32 +54,63 @@ of the financial value of the items the user has recycled.
 					<th>Cash Return ($)</th>
 					<th>Weight (lbs)</th>
 					<th>$/lb</th>
+					<th>Actions</th>
 				</tr>
-				<!-- hard-coded values below
-				<tr>
-					<td> Plastic #1 (Clear Plastic) </td>
-					<td> $1.28 </td>
+				<!-- hard-coded values below are used as an example for the user (which can be deleted by the user) -->
+				<tr id="row1">
+					<td>Plastic #1 (Clear Plastic)</td>
+					<td>$1.28</td>
+					<td>2 lbs</td>
+					<td>1.28/2</td>
+					<td>
+						<input id="delete_button1" type="button" value="Delete" class="delete" onclick="delete_row('1');">
+					</td>
 				</tr>
-				<tr>
-					<td> Plastic #2 (Opaque Plastic) </td>
-					<td> $0.58 </td>
+				<tr id="row2">
+					<td>Plastic #2 (Opaque Plastic)</td>
+					<td>$0.58</td>
+					<td>3 lbs</td>
+					<td>0.58/4</td>
+					<td>
+						<input id="delete_button1" type="button" value="Delete" class="delete" onclick="delete_row('2');">
+					</td>
 				</tr>
-				<tr>
-					<td> Glass </td>
-					<td> $0.10 </td>
+				<tr id="row3">
+					<td>Glass</td>
+					<td>$0.10</td>
+					<td>6 lbs</td>
+					<td>0.10/6</td>
+					<td>
+						<input id="delete_button1" type="button" value="Delete" class="delete" onclick="delete_row('3');">
+					</td>
 				</tr>
-				<tr>
-					<td> Aluminum </td>
-					<td> $0.30 </td>
+				<tr id="row4">
+					<td>Aluminum</td>
+					<td>$0.30</td>
+					<td>1.5 lbs</td>
+					<td>0.30/1.5</td>
+					<td>
+						<input id="delete_button1" type="button" value="Delete" class="delete" onclick="delete_row('4');">
+					</td>
 				</tr>
-				<tr>
-					<td> Copper </td>
-					<td> $2.57 </td>
+				<tr id="row5">
+					<td>Copper</td>
+					<td>$2.57</td>
+					<td>2.5 lbs</td>
+					<td>2.57/2.5</td>
+					<td>
+						<input id="delete_button1" type="button" value="Delete" class="delete" onclick="delete_row('5');">
+					</td>
 				</tr>
-				<tr>
-					<td> Cardboard </td>
-					<td> $0.61 </td>
-				</tr> -->
+				<tr id="row6">
+					<td>Cardboard</td>
+					<td>$0.61</td>
+					<td>3.75 lbs</td>
+					<td>0.61/3.75</td>
+					<td>
+						<input id="delete_button1" type="button" value="Delete" class="delete" onclick="delete_row('6');">
+					</td>
+				</tr>
 			</table>
 		</div>
 
@@ -90,31 +121,51 @@ of the financial value of the items the user has recycled.
 	</body>
 
 	<script>
-
 		var total = 0;
 
 		function addRow() {
 			var table = document.getElementById("calcTable");
-
+			var table_length = (table.rows.length) /*- 1*/;
 			var row = table.insertRow(table.rows.length);
-			var c1 = row.insertCell(0);
+			/*var c1 = row.insertCell(0);
 			var c2 = row.insertCell(1);
 			var c3 = row.insertCell(2);
 			var c4 = row.insertCell(3);
-			c1.innerHTML = document.getElementById("materialInput").value;
+			var c5 = row.insertCell(4);*/
+
+			var new_material = document.getElementById("materialInput").value;
+			var new_cost = "$" + document.getElementById("costInput").value;
+			var new_weight = document.getElementById("weightInput").value + " lbs";
+			var new_ratio = document.getElementById("costInput").value + "/" + document.getElementById("weightInput").value;
+			row.outerHTML = "<tr id='row" + table_length + "'><td>" + new_material + "</td><td>" + new_cost + "</td><td>" + new_weight + "</td><td>" + new_ratio + "</td><td><input type='button' value='Delete' class='delete' onclick='delete_row(" + table_length + ")'></td></tr>";
+			/*c1.innerHTML = document.getElementById("materialInput").value;
 			c2.innerHTML = "$" + document.getElementById("costInput").value;
 			c3.innerHTML = document.getElementById("weightInput").value + " lbs";
 			c4.innerHTML = document.getElementById("costInput").value + "/" + document.getElementById("weightInput").value;
-			if (total == null) {
-				total = parseFloat(document.getElementById("costInput").value, 10);
-			}
-			else {
-				total = total + parseFloat(document.getElementById("costInput").value, 10);
-			}
+			c5.outerHTML = "<td><input type='button' value='Delete' class='delete' onclick='delete_row(" + table_length + ")'></td>";*/
+
+			total = total + parseInt(document.getElementById("costInput").value, 10);
+
 			document.getElementById("totalCost").innerHTML = "Total cash return: " + total;
 			return false;
 		}
 
+		/*function deleteRow() {
+			var table = document.getElementById("calcTable");
+			var row = table.removeRow(table.rows.length);
+			var c1 = row.removeCell(0);
+			var c2 = row.removeCell(1);
+			var c3 = row.removeCell(2);
+			var c4 = row.removeCell(3);
+			var c5 = row.insertCell(4);
+		}*/
+
+		function delete_row(no) {
+			document.getElementById("row" + no + "").outerHTML = "";
+			data.labels.splice(no-1,1);
+			data.population.splice(no-1,1);
+			data.area.splice(no-1,1);
+		}
 
 	</script>
 
