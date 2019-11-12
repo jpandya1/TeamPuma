@@ -54,32 +54,33 @@ function queryMapFetch(url) {
         var response = data;
         var results = response.result;
 
-
         if (!Array.isArray(results) || !results.length) {
 
         } else {
             var count;
-            if(results.length <40){
+            if (results.length < 40) {
                 count = results.length;
-            }else{
+            } else {
                 count = 40;
             }
 
-            var markers =[];
-            for(var i =0; i<count; i++){
-                markers.push({coords:{lat:results[i].latitude, lng: results[i].longitude}});
+            var markers = [];
+            for (var i = 0; i < count; i++) {
+                markers.push({
+                    coords: {
+                        lat: results[i].latitude,
+                        lng: results[i].longitude
+                    }
+                });
             }
-            for(var i =0; i<count; i++){
+            for (var i = 0; i < count; i++) {
                 addMarker(markers[i]);
             }
-            
-
 
         }
 
     });
 }
-
 
 /* --- Earth 911 API Calls --- */
 
@@ -89,7 +90,6 @@ function searchLocations(lat, long, maxDistance) {
 }
 
 /* --- Search Page Methods --- */
-
 
 function generateLocationList(jsonResults) {
     // Create the list element:
@@ -110,7 +110,6 @@ function generateLocationList(jsonResults) {
 function clearSearchList() {
     document.getElementById('APIResponseList').innerHTML = "";
 }
-
 
 function geocode() {
     var location = document.getElementById('searchField').value;
@@ -137,10 +136,11 @@ function geocode() {
             //output to app
             document.getElementById('formatted-address').innerHTML = formattedAddressOutput;
             map.setZoom(13);
-            map.setCenter({lat:lati, lng: lngi})
+            map.setCenter({
+                lat: lati,
+                lng: lngi
+            })
             searchLocations(lati, lngi);
-
-
 
         })
         .catch(function(error) {
@@ -149,37 +149,19 @@ function geocode() {
 
 }
 
+var map;
 
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 5,
-          center: new google.maps.LatLng(30.2672,-97.7431),
-          mapTypeId: 'terrain'
-        });
-      }
+function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 5,
+        center: new google.maps.LatLng(30.2672, -97.7431),
+        mapTypeId: 'terrain'
+    });
+}
 
-        function addMarker(prop){
-          var marker = new google.maps.Marker({
-          position:prop.coords,
-          map:map,
-         });
-        }       
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function addMarker(prop) {
+    var marker = new google.maps.Marker({
+        position: prop.coords,
+        map: map,
+    });
+}

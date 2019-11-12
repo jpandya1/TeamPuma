@@ -1,42 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <link rel="stylesheet" href="./stylesheet.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="./mapsApi/maps.css">
-        <script type="text/javascript" src="./mapsApi/mark.js"></script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./mapsApi/maps.css">
+    <script type="text/javascript" src="./mapsApi/mark.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Search Recyclable Items</title>
 
-  </head>
+</head>
 
-  <body>
-		<div id="navigationBanner">
-			<ul>
-				<li><a href="./splashpage.html" target="_self">Home</a></li>
-				<li><a href="./about.html" target="_self">About</a></li>
-    			<li><a href="./searchpage.html">Search</a></li>
-			</ul>
-		</div>
+<body>
+    <div id="navigationBanner">
+        <ul>
+            <li><a href="./splashpage.html" target="_self">Home</a></li>
+            <li><a href="./about.html" target="_self">About</a></li>
+            <li><a href="./searchpage.html">Search</a></li>
+        </ul>
+    </div>
 
     <div id="titleBanner">
-      <div id="titleBannerImage">
-        <img src="images/recycle_image1.png" alt="image0" height="100">
-      </div>
-      <div id="titleBannerText">
-        <h1>Green Routine</h1>
-        <h2>Empowering users to recycle responsibly</h2>
-      </div>
+        <div id="titleBannerImage">
+            <img src="images/recycle_image1.png" alt="image0" height="100">
+        </div>
+        <div id="titleBannerText">
+            <h1>Green Routine</h1>
+            <h2>Empowering users to recycle responsibly</h2>
+        </div>
     </div>
-<!--
-    	<p>Search Recycling centers by items!</p>
+    <!--
+      <p>Search Recycling centers by items!</p>
 -->
     <div id="leftSide">
-      <br>
-      <p id="mapTitle" style="text-align: left" >Use our map tool to search for recycling centers by items!</p>
-
+        <br>
+        <p id="mapTitle" style="text-align: left">Use our map tool to search for recycling centers by items!</p>
 
         <div id="formatted-address"></div>
         <div id="searchLocations">
@@ -54,26 +54,21 @@
 
         <div id="hello"></div>
 
+    </div>
 
-  	</div>
+    <div id="rightSide">
+        <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+        <div id="map"></div>
 
-  	<div id="rightSide">
-  		<input id="pac-input" class="controls" type="text" placeholder="Search Box">
-    	<div id="map"></div>
-    	
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1tYYqGdNtn_Re-u4X4ldatpcQ6sKoFsQ&callback=initMap">
+        </script>
 
-     
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1tYYqGdNtn_Re-u4X4ldatpcQ6sKoFsQ&callback=initMap">
-    </script>
+    </div>
 
-  	</div>
+    <footer id="bottomBanner">
+        <p>University of Texas at Austin (October 2019) .</p>
+    </footer>
 
-
-  <footer id="bottomBanner">
-    <p>University of Texas at Austin (October 2019)   .</p>
-  </footer>
-
-  </body>
+</body>
 
 </html>
