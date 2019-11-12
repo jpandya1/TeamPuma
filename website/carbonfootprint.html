@@ -92,7 +92,7 @@
                     <td id="age_row1">Plastic</td>
                     <td>2</td>
                     <td>165.6</td>
-                    <td>10/01/2019</td>
+                    <td>2019/09/09</td>
                     <td>
                         <input type="button" id="edit_button1" value="Edit" class="edit line" onclick="edit_row('1');updateChart();">
                         <input type="button" id="save_button1" value="Save" style="display: none" class="save line" onclick="save_row('1');updateChart();">
@@ -106,7 +106,7 @@
                     <td id="age_row2">Glass</td>
                     <td>2</td>
                     <td>480</td>
-                    <td>10/02/2019</td>
+                    <td>2019/10/12</td>
                     <td>
                         <input type="button" id="edit_button2" value="Edit" class="edit" onclick="edit_row('2');updateChart();">
                         <input type="button" id="save_button2" value="Save" style="display: none" class="save" onclick="save_row('2');updateChart();">
@@ -120,7 +120,7 @@
                     <td id="age_row3">Metal</td>
                     <td>1</td>
                     <td>400</td>
-                    <td>10/01/2019</td>
+                    <td>2019/11/05</td>
                     <td>
                         <input type="button" id="edit_button3" value="Edit" class="edit" onclick="edit_row('3');updateChart();">
                         <input type="button" id="save_button3" value="Save" style="display: none" class="save" onclick="save_row('3');updateChart();">
@@ -134,7 +134,7 @@
                     <td id="age_row4">Paper</td>
                     <td>3</td>
                     <td>90</td>
-                    <td>10/05/2019</td>
+                    <td>2019/11/11</td>
                     <td>
                         <input type="button" id="edit_button4" value="Edit" class="edit" onclick="edit_row('4');updateChart();">
                         <input type="button" id="save_button4" value="Save" style="display: none" class="save" onclick="save_row('4');updateChart();">
@@ -145,10 +145,19 @@
                 <tr>
                     <td><input type="text" id="new_name"></td>
                     <td><input type="text" id="new_country"></td>
-                    <td><input type="text" id="new_age"></td>
+                    <td><select id="new_age">
+                        <option value="Plastic">Plastic</option>
+                        <option value="Glass">Glass</option>
+                        <option value="Metal">Metal</option>
+                        <option value="Paper">Paper</option>
+                        <option value="Paper">Electronics</option>
+                        <option value="Paper">Household</option>
+                        <option value="Paper">Construction</option>
+                        <option value="Paper">Automotive</option>
+                    </select></td>
                     <td><input type="text" id="new_quantity"></td>
                     <td><div type="text" id="new_emiss"></div></td>
-                    <td><input type="text" id="new_date"></td>
+                    <td><div type="text" id="new_date"></div></td>
                     <td><input type="button" class="add" onclick="add_row();updateChart();" value="Add Row"></td>
                 </tr>
 
@@ -273,7 +282,7 @@
             var new_age = document.getElementById("new_age").value;
             var new_quantity = document.getElementById("new_quantity").value;
             var new_emiss = new_country * new_quantity;
-            var new_date = document.getElementById("new_date").value;
+            var new_date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
 
             var table = document.getElementById("data_table");
             var table_len = (table.rows.length) - 1;
@@ -288,6 +297,21 @@
             document.getElementById("new_country").value = "";
             document.getElementById("new_age").value = "";
         }
+        function getDate(){
+            var date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
+            document.getElementById("new_date").innerHTML = date;
+
+        }
+        function totalEmission(){
+            var new_country = document.getElementById("new_country").value;
+            var new_quantity = document.getElementById("new_quantity").value;
+            var new_emiss = new_country * new_quantity;
+            document.getElementById("new_emiss").innerHTML = new_emiss;
+        }
+
+        setInterval(getDate(), 5000);
+        setInterval(totalEmission(), 500);
+
 </script>
 
 
