@@ -39,32 +39,7 @@ function queryFetch(url) {
 
     });
 }
-function queryLocationFetch(url) {
-    fetch(CORS_PREFIX+url, {mode: 'cors'}).then( resp => {
-        return resp.json();
-    }).then(data => {
 
-        var response = data;
-        var results = response.result;
-
-        if (document.getElementById('APIResponseList').hasChildNodes()) {
-            // clear the list of former search results
-            clearSearchList();
-        }
-
-        if (!Array.isArray(results) || !results.length) {
-            // No results were returned for this request
-            document.getElementById("APIResponse").innerHTML = "No items were found for your request.";
-        } else {
-            // Some number of results were returned
-            document.getElementById("APIResponse").innerHTML = " ";
-
-            // fill in the list with search results
-            document.getElementById('APIResponseList').appendChild(generateLocationList(results));
-            console.log(results);}
-
-    });
-}
 
 /* --- Earth 911 API Calls --- */
 function getMaterials() {
@@ -101,22 +76,6 @@ function generateList(jsonResults) {
     return list;
 }
 
-
-function generateLocationList(jsonResults) {
-    // Create the list element:
-    var list = document.createElement('ul');
-    for(var i = 0; i < jsonResults.length; i++) {
-        // Create the list item:
-        var item = document.createElement('li');
-
-        // Set its contents:
-        item.appendChild(document.createTextNode(jsonResults[i].description + " --- " + jsonResults[i].distance + " miles from your location"));
-
-        // Add it to the list:
-        list.appendChild(item);
-    }
-    return list;
-}
 
 function clearSearchList() {
     document.getElementById('APIResponseList').innerHTML = "";
