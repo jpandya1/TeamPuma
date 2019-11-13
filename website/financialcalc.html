@@ -42,6 +42,19 @@ of the financial value of the items the user has recycled.
 				<input id="costInput" type="text"/>
 				<br>Weight (lbs):<br>
 				<input id="weightInput" type="text"/>
+				<br>Category:<br>
+				<select id="ddmenu">
+					<option value="blank"></option>
+					<option value="plastic">Plastic</option>
+					<option value="glass">Glass</option>
+					<option value="metal">Metal</option>
+					<option value="paper">Paper</option>
+					<option value="electronics">Electronics</option>
+					<option value="household">Household</option>
+					<option value="construction">Construction</option>
+					<option value="automotive">Automotive</option>
+					<option value="other/unknown">Other/Unknown</option>
+				</select>
 				<br>
 				<input id="submitButton" type="submit" value="Submit" onclick = "return addRow();"/>
 			</form>
@@ -116,13 +129,21 @@ of the financial value of the items the user has recycled.
 
 		<div>
 			<p id="totalCost">Total cash return: $5.44</p>
+			
+		</div>
+		
+		<div id="report">
+			<table id="reportTable">
+				
+			
+			</table>
 		</div>
 
 	</body>
 
 	<script>
 		var total = 5.44; //default value based on example recyclables
-
+		//var catTotals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 		function addRow() {
 			var table = document.getElementById("calcTable");
 			var table_length = (table.rows.length) /*- 1*/;
@@ -143,10 +164,12 @@ of the financial value of the items the user has recycled.
 			c3.innerHTML = document.getElementById("weightInput").value + " lbs";
 			c4.innerHTML = document.getElementById("costInput").value + "/" + document.getElementById("weightInput").value;
 			c5.outerHTML = "<td><input type='button' value='Delete' class='delete' onclick='delete_row(" + table_length + ")'></td>";*/
-
+			
 			total = total + parseFloat(document.getElementById("costInput").value, 10);
+			//catTotals[document.getElementById("ddmenu").index] = catTotals[document.getElementById("ddmenu").index] + parseFloat(document.getElementById("costInput".value, 10);
 
 			document.getElementById("totalCost").innerHTML = "Total cash return: $" + total;
+			//document.getElementById("catCost").innerHTML = "category return: $" + catTotals[document.getElementById("ddmenu").index];
 			return false;
 		}
 
