@@ -142,7 +142,7 @@ of the financial value of the items the user has recycled.
 
 	<script>
 		var total = 5.44; //default value based on example recyclables
-		//var catTotals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+		var plasticTot = 3;
 		function addRow() {
 			var table = document.getElementById("calcTable");
 			var table_length = (table.rows.length) /*- 1*/;
@@ -184,7 +184,7 @@ of the financial value of the items the user has recycled.
 
 		function delete_row(num) {
 			total = total - parseFloat(document.getElementById("row" + num).cells[1].innerHTML, 10);
-			document.getElementById("totalCost").innerHTML = "Total cash return: $" + total;				//FIX: deletion causes NaN
+			document.getElementById("totalCost").innerHTML = "Total cash return: $" + total;				
 
 			document.getElementById("row" + num + "").outerHTML = "";
 			data.labels.splice(num-1,1);
