@@ -1,4 +1,36 @@
-<!DOCTYPE html>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.List" %>
+
+<%@ page import="java.util.Collections" %>
+
+<%@ page import="com.google.appengine.api.users.User" %>
+
+<%@ page import="com.google.appengine.api.users.UserService" %>
+
+<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
+
+
+<%@ page import="com.googlecode.objectify.Objectify" %>
+
+<%@ page import="com.googlecode.objectify.ObjectifyService" %>
+
+<%@ page import="com.googlecode.objectify.*" %>
+
+<%@ page import="java.math.BigDecimal" %>
+<%@ page import="java.math.MathContext" %>
+<%@ page import="guestbook.CFentry" %>
+<%@ page import="guestbook.CarbMap" %>
+<%@ page import="java.util.Properties" %>
+
+
+
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
+
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
@@ -49,12 +81,12 @@
     <body>
 
         <div id="navigationBanner">
-    		<ul>
-    			<li><a href="./splashpage.html">Home</a></li>
-    			<li><a href="./about.html">About</a></li>
-    			<li><a href="./searchpage.html">Search</a></li>
-    		</ul>
-    	</div>
+            <ul>
+                <li><a href="./splashpage.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./searchpage.html">Search</a></li>
+            </ul>
+        </div>
 
         <div id="titleBanner">
             <div id="titleBannerImage">
@@ -73,108 +105,172 @@
 
 
 
-        <div id="wrapper">
-            <table align='center' cellspacing=2 cellpadding=5 id="data_table" border=1>
-                <tr>
-                    <th>Item (material)</th>
-                    <th>Carbon content (lbs)</th>
-                    <th>Category</th>
-                    <th>Quantity</th>
-                    <th>Total Emission (lbs)</th>
-                    <th>Date</th>
-                    <th>Actions</th>
-                </tr>
 
-                <tr id="row1">
-                    <td id="name_row1">Coke bottle</td>
-                    <td id="country_row1">82.8</td>
-                    <td id="age_row1">Plastic</td>
-                    <td>2</td>
-                    <td>165.6</td>
-                    <td>2019/09/09</td>
-                    <td>
-                        <input type="button" id="edit_button1" value="Edit" class="edit line" onclick="edit_row('1');updateChart();">
-                        <input type="button" id="save_button1" value="Save" style="display: none" class="save line" onclick="save_row('1');updateChart();">
-                        <input type="button" value="Delete" class="delete line" onclick="delete_row('1');updateChart();">
-                    </td>
-                </tr>
 
-                <tr id="row2">
-                    <td id="name_row2">Milk bottle</td>
-                    <td id="country_row2">160</td>
-                    <td id="age_row2">Glass</td>
-                    <td>2</td>
-                    <td>480</td>
-                    <td>2019/10/12</td>
-                    <td>
-                        <input type="button" id="edit_button2" value="Edit" class="edit" onclick="edit_row('2');updateChart();">
-                        <input type="button" id="save_button2" value="Save" style="display: none" class="save" onclick="save_row('2');updateChart();">
-                        <input type="button" value="Delete" class="delete" onclick="delete_row('2');updateChart();">
-                    </td>
-                </tr>
 
-                <tr id="row3">
-                    <td id="name_row3">Aluminum Tray</td>
-                    <td id="country_row3">400</td>
-                    <td id="age_row3">Metal</td>
-                    <td>1</td>
-                    <td>400</td>
-                    <td>2019/11/05</td>
-                    <td>
-                        <input type="button" id="edit_button3" value="Edit" class="edit" onclick="edit_row('3');updateChart();">
-                        <input type="button" id="save_button3" value="Save" style="display: none" class="save" onclick="save_row('3');updateChart();">
-                        <input type="button" value="Delete" class="delete" onclick="delete_row('3');updateChart();">
-                    </td>
-                </tr>
+<%
 
-                <tr id="row4">
-                    <td id="name_row4">Newspaper</td>
-                    <td id="country_row4">30</td>
-                    <td id="age_row4">Paper</td>
-                    <td>3</td>
-                    <td>90</td>
-                    <td>2019/11/11</td>
-                    <td>
-                        <input type="button" id="edit_button4" value="Edit" class="edit" onclick="edit_row('4');updateChart();">
-                        <input type="button" id="save_button4" value="Save" style="display: none" class="save" onclick="save_row('4');updateChart();">
-                        <input type="button" value="Delete" class="delete" onclick="delete_row('4');updateChart();">
-                    </td>
-                </tr>
+    UserService userService = UserServiceFactory.getUserService();
 
-                <tr>
-                    <td><input type="text" id="new_name"></td>
-                    <td><input type="text" id="new_country"></td>
-                    <td><select id="new_age">
+    User user = userService.getCurrentUser();
+
+    if (user != null) {
+
+        pageContext.setAttribute("user", user);
+
+		%>
+		<p>Hello, ${fn:escapeXml(user.nickname)}! (You can
+		
+		<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)</p>
+		
+		<%
+			ObjectifyService.register(CarbMap.class);
+			CarbMap tempmap;
+			List<CarbMap> maps = ObjectifyService.ofy().load().type(CarbMap.class).list();
+			//makes first mapstore if we don't have one already
+			if(maps.size() < 1){
+				System.out.println("making new mapstore##########");
+				tempmap = new CarbMap(" ");
+			}
+			else{
+				tempmap = maps.get(0);
+			}
+			//we have a mapstore which contains a hashmap
+			
+			if(!tempmap.contains(user.getNickname())){
+				//if we dont already store info for user, make a new list for entries for this user
+				tempmap.addUser(user.getNickname());
+			}
+			// list of entries from user
+			List<CFentry> entries = tempmap.getByUser(user.getNickname());
+			
+%>
+
+			<div id="wrapper">
+		        <table align='center' cellspacing=2 cellpadding=5 id="data_table" border=1>
+		            <tr>
+		                <th>Item (material)</th>
+		                <th>Carbon content (lbs)</th>
+		                <th>Category</th>
+		                <th>Quantity</th>
+		                <th>Total Emission (lbs)</th>
+		                <th>Date</th>
+		                <th>Actions</th>
+		            </tr>    
+
+
+<%
+			int count = 0;
+			int total = 0;
+			for (CFentry entry : entries) {
+				
+		            pageContext.setAttribute("greeting_item",entry.getItem());
+		            pageContext.setAttribute("greeting_carbon",entry.getCarbon());
+		            pageContext.setAttribute("greeting_category",entry.getCategory());
+		            pageContext.setAttribute("greeting_quantity",entry.getQuantity());
+		            pageContext.setAttribute("greeting_emission",entry.getEmission());                 
+					
+					String pattern = "yyyy-MM-dd";
+					SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+					String date = simpleDateFormat.format(entry.getDate());
+					pageContext.setAttribute("greeting_Date", date);
+					total += entry.getEmission();
+						//TODO: replace buttons below
+			%>		
+					
+				<tr id="row${fn:escapeXml(countStr)}">
+		            <td id="name_row">${fn:escapeXml(greeting_item)}</td>
+		            <td id="country_row">${fn:escapeXml(greeting_carbon)}</td>
+		            <td id="age_row">${fn:escapeXml(greeting_category)}</td>
+		            <td>${fn:escapeXml(greeting_quantity)}</td>
+		            <td>${fn:escapeXml(greeting_emission)}</td>
+		            <td>${fn:escapeXml(greeting_Date)}</td> 
+		            <td>
+		            	<form action="/carbsign" method="post">
+						      <div><input type="submit" value="Delete" /></div>
+						      <input type="hidden" name="material" value="${fn:escapeXml(greeting_item)}" />
+						      <input type="hidden" name="whatDo" value="del"/>
+					    </form>
+		            </td>      
+		        </tr>
+		<%		
+				
+					count++;	
+				}
+			pageContext.setAttribute("totalCarb", total);
+			%>
+			<tr>
+                <form action="/carbsign" method="post"> 
+                
+                    <td><input type="text" name="material" id="new_name"></td>
+                    <td><input type="text" name="carbon" id="new_country"></td>
+                    <td><select name="category" id="category">
                         <option value="Plastic">Plastic</option>
                         <option value="Glass">Glass</option>
                         <option value="Metal">Metal</option>
                         <option value="Paper">Paper</option>
-                        <option value="Paper">Electronics</option>
-                        <option value="Paper">Household</option>
-                        <option value="Paper">Construction</option>
-                        <option value="Paper">Automotive</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Household">Household</option>
+                        <option value="Construction">Construction</option>
+                        <option value="Automotive">Automotive</option>
                     </select></td>
-                    <td><input type="text" id="new_quantity"></td>
-                    <td><div type="text" id="new_emiss"></div></td>
-                    <td><div type="text" id="new_date"></div></td>
-                    <td><input type="button" class="add" onclick="add_row();updateChart();" value="Add Row"></td>
-                </tr>
+                    <td><input type="text" name="quantity" id="new_quantity"></td>
+                    <td>TOTAL: ${fn:escapeXml(totalCarb)} lbs</td>
+                    <td></td>
 
-            </table>
-        </div>
-        <br>
-        <br>
-        <div>
+                    <td><input type="submit" name="submit"class="add line" value="Add Row"></td>    
+                    <input type="hidden" name="whatDo" value="add"/>               
+                </form>
+                </tr>
+          </table>
+    </div>
+         <div>
             <h1>Your Total Emission Breakdown</h1>
             <div style="height: 700px">
                 <canvas id="pieChart"></canvas>
             </div>
-
         </div>
+			<%
+			ObjectifyService.ofy().save().entity(tempmap);
+    }
+    else{
 
-            <div id="bottomBanner">
+%>
+
+<p><a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
+
+to create you own blog posts!</p>
+
+<%
+    }
+
+	
+		%>
+
+
+
+    <div id="bottomBanner">
         <p>University of Texas at Austin (October 2019)   .</p>
     </div>
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
 
 
     <!-- partial -->
