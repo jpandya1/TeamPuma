@@ -22,10 +22,11 @@
 
 <%@ page import="guestbook.Greeting" %>
 
-<%@ page import="guestbook.Recycler" %>
 
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
 
 <html lang="en" dir="ltr">
     <head>
@@ -200,18 +201,21 @@ to create you own blog posts!</p>
         			String date = simpleDateFormat.format(greeting.getDate());
         			pageContext.setAttribute("greeting_Date", date);
         			
+        			String countStr = Integer.toString(count);
+	
  		%>		
-				<tr id="row${fn:escapeXml(count)}">
-                    <td id="name_row${fn:escapeXml(count)}">${fn:escapeXml(greeting_item)}</td>
-                    <td id="country_row${fn:escapeXml(count)}">${fn:escapeXml(greeting_carbon)}</td>
-                    <td id="age_row${fn:escapeXml(count)}">${fn:escapeXml(greeting_category)}</td>
+ 				
+				<tr id="row${fn:escapeXml(countStr)}">
+                    <td id="name_row${fn:escapeXml(countStr)}">${fn:escapeXml(greeting_item)}</td>
+                    <td id="country_row${fn:escapeXml(countStr)}">${fn:escapeXml(greeting_carbon)}</td>
+                    <td id="age_row"${fn:escapeXml(countStr)}>${fn:escapeXml(greeting_category)}</td>
                     <td>${fn:escapeXml(greeting_quantity)}</td>
                     <td>${fn:escapeXml(greeting_emission)}</td>
                     <td>${fn:escapeXml(greeting_htmlDate)}</td>
                     <td>
-                        <input type="button" id="edit_button${fn:escapeXml(count)}" value="Edit" class="edit line" onclick="edit_row('${fn:escapeXml(count)}');updateChart();">
-                        <input type="button" id="save_button${fn:escapeXml(count)}" value="Save" style="display: none" class="save line" onclick="save_row('${fn:escapeXml(count)}');updateChart();">
-                        <input type="button" value="Delete" class="delete line" onclick="delete_row('${fn:escapeXml(count)}');updateChart();">
+                        <input type="button" id="edit_button${fn:escapeXml(countStr)}" value="Edit" class="edit line" onclick="edit_row('${fn:escapeXml(countStr)}');updateChart();">
+                        <input type="button" id="save_button${fn:escapeXml(countStr)}" value="Save" style="display: none" class="save line" onclick="save_row('${fn:escapeXml(countStr)}');updateChart();">
+                        <input type="button" value="Delete" class="delete line" onclick="delete_row('${fn:escapeXml(countStr)}');updateChart();">
                     </td>
                 </tr>
        <%		
@@ -249,14 +253,6 @@ to create you own blog posts!</p>
             </table>
         </div>
 		
-			    
-		
-		
-		
-
-
-
-                
 
         <br>
         <br>
