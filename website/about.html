@@ -226,13 +226,12 @@
             var totalSum = 0;
 
             for (var i = 0; i < response1.length; i++) {
-                if (response1[i].login != null) {
+                
                     document.getElementById(response1[i].login + "url").innerHTML = response1[i].html_url;
                     document.getElementById(response1[i].login + "commits").innerHTML = response1[i].contributions;
                     totalSum = totalSum + response1[i].contributions;
-                } else {
-                    totalSum = totalSum + response1[i].contributions;
-                }
+                
+
 
             }
             document.getElementById("totalCommit").innerHTML = totalSum;
