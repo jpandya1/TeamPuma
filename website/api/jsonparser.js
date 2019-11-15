@@ -208,51 +208,58 @@ function getMaterialsByID(material_id) {
 }
 
 function generateGalleryOfMatchingMaterials(jsonResults) {
-    var gallery = document.getElementById("LinkBoxGallery");
-    gallery.innerHTML = "";
 
-    console.log(jsonResults);
+    fetch(CORS_PREFIX+BASE_URL+'earth911.getMaterials?api_key='+API_KEY, {mode: 'cors'}).then( resp => {
+        return resp.json();
+    }).then(data => {
 
-    var materials = []
-    for (var j = 0; j < jsonResults.length; j++) {
-        var material = getMaterialById(jsonResults[j]);
-        materials.push(material);
-    }
+        var response = data;
+        var results = response.result;
 
-    console.log(materials);
+        console.log(jsonResults);
 
-    for (var i = 0; i < materials.length; i++) {
+        var gallery = document.getElementById("DetailLinkBoxGallery");
 
-        // create a gallery element for the galleryOfLinkBoxes class
-        var galleryWrapper = document.createElement('div');
-        galleryWrapper.setAttribute("class", "galleryOfLinkBoxes");
+        // console.log(jsonResults);
 
-        // Create a link box
-        var itemBox = document.createElement('div');
-        itemBox.setAttribute("class", "linkBoxes");
+        for (var i = 0; i < jsonResults.length; i++) {
 
-        var title = document.createElement("h3");
-        title.innerHTML = "wow";//materials[i].description;
-        itemBox.appendChild(title);
+            // create a gallery element for the galleryOfLinkBoxes class
+            var galleryWrapper = document.createElement('div');
+            galleryWrapper.setAttribute("class", "galleryOfLinkBoxes");
 
-        var img = document.createElement("img");
-        img.setAttribute("class", "databaseGalleryImages");
-        img.setAttribute("width", "600");
-        img.setAttribute("height", "400");
-        img.setAttribute("src", "http://greenroutine.appspot.com/images/paint.jpg");
-        itemBox.appendChild(img);
+            // Create a link box
+            var itemBox = document.createElement('div');
+            itemBox.setAttribute("class", "linkBoxes");
 
-        var brk = document.createElement("br"); // for spacing
-        itemBox.append(brk);
+            var title = document.createElement("h3");
 
-        var descr = document.createElement("p");
-        descr.innerHTML = "huh";//materials[i].long_description;
-        itemBox.append(descr);
+            var img = document.createElement("img");
+            img.setAttribute("class", "databaseGalleryImages");
+            img.setAttribute("width", "600");
+            img.setAttribute("height", "400");
+            img.setAttribute("src", "http://greenroutine.appspot.com/images/paint.jpg");
 
+            var brk = document.createElement("br"); // for spacing
 
-        galleryWrapper.appendChild(itemBox);
-        gallery.appendChild(galleryWrapper);
-    }
+            var descr = document.createElement("p");
+
+            for (var j = 0; j < results.length; j++) {
+                if (results[j].material_id == jsonResults[i]) {
+                    title.innerHTML = results[j].description;
+                    descr.innerHTML = results[j].long_description;
+                }
+            }
+
+            itemBox.appendChild(title);
+            itemBox.appendChild(img);
+            itemBox.append(brk);
+            itemBox.append(descr);
+
+            galleryWrapper.appendChild(itemBox);
+            gallery.appendChild(galleryWrapper);
+        }
+    });
 }
 
 module.exports = convert;
