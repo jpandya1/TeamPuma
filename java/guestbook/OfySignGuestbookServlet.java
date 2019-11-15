@@ -56,7 +56,7 @@ public class OfySignGuestbookServlet extends HttpServlet {
 	        String item = req.getParameter("material");
 	        try {
 	        Double value = Double.parseDouble(req.getParameter("value"));
-	        Integer quantity = Integer.parseInt(req.getParameter("quantity"));
+	        Double quantity = Double.parseDouble(req.getParameter("quantity"));
 	       
 	        
 	        DBentry newEntry = new DBentry(item, value, quantity);
@@ -72,6 +72,7 @@ public class OfySignGuestbookServlet extends HttpServlet {
 	        resp.sendRedirect("/financialcalc.jsp");
 	        } catch(Exception e) {
 	        	System.out.print("Invalid input");
+	        	resp.sendRedirect("/financialcalc.jsp");
 	        	return;
 	        }
         }

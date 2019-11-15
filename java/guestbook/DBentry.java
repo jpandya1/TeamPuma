@@ -9,16 +9,16 @@ import com.googlecode.objectify.annotation.Index;
 public class DBentry{
 	//Long id;
     String item;
-    Integer quantity;
+    Double quantity;
     Double valuePer;
     private DBentry() {}
-    public DBentry(String name, Double value, int quantity) {
+    public DBentry(String name, Double value, Double quantity) {
     	this.item = name;
     	//try catch for invalid input
     	this.valuePer = value;
     	this.quantity  = quantity;
     }
-    public Integer getQuantity() {
+    public Double getQuantity() {
     	return quantity;
     }
     public String getItem() {
