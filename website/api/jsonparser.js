@@ -54,7 +54,6 @@ function RDQueryFetch(url) {
         generateGalleryOfLinKBoxes(results);
 
         // console.log(results);
-        console.log(getFamiliesOfTypeID)
     });
 }
 
@@ -147,14 +146,37 @@ function generateGalleryOfLinKBoxes(jsonResults) {
         var brk = document.createElement("br"); // for spacing
         itemBox.append(brk);
 
-        var descr = document.createElement("p");
-        descr.innerHTML = "Learn more";
-        itemBox.append(descr);
-
+        var relatedItemsBtn = document.createElement("button");
+        if (jsonResults[i].material_ids != undefined) {
+            var matchingMaterials = jsonResults[i].material_ids;
+            // console.log(matchingMaterials);
+            relatedItemsBtn.onclick = generateGalleryOfMatchingMaterials(matchingMaterials);
+            relatedItemsBtn.innerHTML = "See Related Items";
+        }
+        itemBox.append(relatedItemsBtn);
 
         galleryWrapper.appendChild(itemBox);
         gallery.appendChild(galleryWrapper);
+
+
     }
+}
+
+function getMaterialById(material_id) {
+    fetch(CORS_PREFIX+BASE_URL+'earth911.getMaterials?api_key='+API_KEY, {mode: 'cors'}).then( resp => {
+        return resp.json();
+    }).then(data => {
+
+        var response = data;
+        var results = response.result;
+
+        for (var i = 0; i < results.length; i++) {
+            if (results[i].material_id == material_id) {
+                // console.log(results[i]);
+                return results[i];
+            }
+        }
+    });
 }
 
 function getMaterialsByID(material_id) {
@@ -166,11 +188,14 @@ function getMaterialsByID(material_id) {
         var response = data;
         var results = response.result;
 
+        // console.log("Material id = " + material_id);
+
         var matchingMaterials = [];
         for (var i = 0; i < results.length; i++) {
             if (results[i].family_ids != undefined) {
                 for (var j = 0; j < results[i].family_ids.length; j++) {
                     if (results[i].family_ids[j] == material_id) {
+                        console.log("found a match");
                         matchingMaterials.push(results[i]);
                         break;
                     }
@@ -180,6 +205,54 @@ function getMaterialsByID(material_id) {
         console.log(matchingMaterials);
         return matchingMaterials;
     });
+}
+
+function generateGalleryOfMatchingMaterials(jsonResults) {
+    var gallery = document.getElementById("LinkBoxGallery");
+    gallery.innerHTML = "";
+
+    console.log(jsonResults);
+
+    var materials = []
+    for (var j = 0; j < jsonResults.length; j++) {
+        var material = getMaterialById(jsonResults[j]);
+        materials.push(material);
+    }
+
+    console.log(materials);
+
+    for (var i = 0; i < materials.length; i++) {
+
+        // create a gallery element for the galleryOfLinkBoxes class
+        var galleryWrapper = document.createElement('div');
+        galleryWrapper.setAttribute("class", "galleryOfLinkBoxes");
+
+        // Create a link box
+        var itemBox = document.createElement('div');
+        itemBox.setAttribute("class", "linkBoxes");
+
+        var title = document.createElement("h3");
+        title.innerHTML = "wow";//materials[i].description;
+        itemBox.appendChild(title);
+
+        var img = document.createElement("img");
+        img.setAttribute("class", "databaseGalleryImages");
+        img.setAttribute("width", "600");
+        img.setAttribute("height", "400");
+        img.setAttribute("src", "http://greenroutine.appspot.com/images/paint.jpg");
+        itemBox.appendChild(img);
+
+        var brk = document.createElement("br"); // for spacing
+        itemBox.append(brk);
+
+        var descr = document.createElement("p");
+        descr.innerHTML = "huh";//materials[i].long_description;
+        itemBox.append(descr);
+
+
+        galleryWrapper.appendChild(itemBox);
+        gallery.appendChild(galleryWrapper);
+    }
 }
 
 module.exports = convert;
