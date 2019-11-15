@@ -35,27 +35,46 @@ function queryFetch(url) {
 
             // fill in the list with search results
             document.getElementById('APIResponseList').appendChild(generateList(results));
-            console.log(results);}
-
+            console.log(results);
+        }
     });
 }
 
 
 /* --- Earth 911 API Calls --- */
+// Returns an array of all materials
 function getMaterials() {
     queryFetch(BASE_URL+'earth911.getMaterials?api_key='+API_KEY);
 }
 
+// Searches for materials matching keywords
 function searchMaterials(material) {
     queryFetch(BASE_URL+'earth911.searchMaterials?api_key='+API_KEY+'&query='+material);
 }
 
+// Returns an array of brief location information given a latitude and longitude
 function searchLocations(lat, long, maxDistance) {
     queryLocationFetch(BASE_URL+'earth911.searchLocations?api_key='+API_KEY+'&latitude='+lat+'&longitude='+long+'&maxDistance='+maxDistance);
 }
 
+// Finds materials accepted at nearby locations
 function searchMaterialsByProximity(lat, long) {
     queryFetch(BASE_URL+'earth911.searchMaterialsByProximity?api_key='+API_KEY+'&latitude='+lat+'&longitude='+long);
+}
+
+// Searches for families matching keywords within the query
+function searchFamilies(query) {
+    queryFetch(BASE_URL+'earth911.searchFamilies?api_key='+API_KEY+'&query='+query);
+}
+
+// Returns an array of all families
+function getFamilies() {
+    queryFetch(BASE_URL+'earth911.getFamilies?api_key='+API_KEY);
+}
+
+// Returns an array of all families with specific family_type_id
+function getFamiliesOfTypeID(familyID) {
+    queryFetch(BASE_URL+'earth911.getFamilies?api_key='+API_KEY+'&family_type_id='+familyID);
 }
 
 /* --- Search Page Methods --- */
@@ -69,6 +88,7 @@ function generateList(jsonResults) {
 
         // Set its contents:
         item.appendChild(document.createTextNode(jsonResults[i].description));
+        item.appendChild(document.createTextNode(jsonResults[i].url));
 
         // Add it to the list:
         list.appendChild(item);
