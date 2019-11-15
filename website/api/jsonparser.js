@@ -47,7 +47,8 @@ function getMaterials() {
     queryFetch(BASE_URL+'earth911.getMaterials?api_key='+API_KEY);
 }
 
-function searchMaterials(material) {
+//function searchMaterials(material) {
+searchMaterials = function(material) {
     queryFetch(BASE_URL+'earth911.searchMaterials?api_key='+API_KEY+'&query='+material);
 }
 

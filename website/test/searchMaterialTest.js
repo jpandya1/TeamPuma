@@ -1,3 +1,4 @@
+const fetch = require('node-fetch');
 let convert = require('../api/jsonparser.js')
 let assert = require('assert');
 
