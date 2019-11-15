@@ -1,3 +1,4 @@
+let convert = {};
 /*
 * https://talk.observablehq.com/t/httprequest-origin-null/121
 * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
@@ -80,3 +81,5 @@ function generateList(jsonResults) {
 function clearSearchList() {
     document.getElementById('APIResponseList').innerHTML = "";
 }
+
+module.exports = convert;

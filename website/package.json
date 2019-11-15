@@ -1,0 +1,26 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "Tests for Our Green Routine",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^6.2.2"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpandya1/TeamPuma.git"
+  },
+  "author": "Team Puma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jpandya1/TeamPuma/issues"
+  },
+  "homepage": "https://github.com/jpandya1/TeamPuma#readme"
+}
