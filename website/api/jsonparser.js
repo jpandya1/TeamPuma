@@ -35,9 +35,26 @@ function queryFetch(url) {
             document.getElementById("APIResponse").innerHTML = " ";
 
             // fill in the list with search results
-            document.getElementById('APIResponseList').appendChild(generateList(results));
+            // document.getElementById('APIResponseList').appendChild(generateList(results));
             console.log(results);
         }
+
+    });
+}
+
+function RDQueryFetch(url) {
+    fetch(CORS_PREFIX+url, {mode: 'cors'}).then( resp => {
+        return resp.json();
+    }).then(data => {
+
+        var response = data;
+        var results = response.result;
+
+        // fill in the list with search results
+        generateGalleryOfLinKBoxes(results);
+
+        // console.log(results);
+        console.log(getFamiliesOfTypeID)
     });
 }
 
@@ -65,17 +82,17 @@ function searchMaterialsByProximity(lat, long) {
 
 // Searches for families matching keywords within the query
 function searchFamilies(query) {
-    queryFetch(BASE_URL+'earth911.searchFamilies?api_key='+API_KEY+'&query='+query);
+    RDQueryFetch(BASE_URL+'earth911.searchFamilies?api_key='+API_KEY+'&query='+query);
 }
 
 // Returns an array of all families
 function getFamilies() {
-    queryFetch(BASE_URL+'earth911.getFamilies?api_key='+API_KEY);
+    RDQueryFetch(BASE_URL+'earth911.getFamilies?api_key='+API_KEY);
 }
 
 // Returns an array of all families with specific family_type_id
 function getFamiliesOfTypeID(familyID) {
-    queryFetch(BASE_URL+'earth911.getFamilies?api_key='+API_KEY+'&family_type_id='+familyID);
+    RDQueryFetch(BASE_URL+'earth911.getFamilies?api_key='+API_KEY+'&family_type_id='+familyID);
 }
 
 /* --- Search Page Methods --- */
@@ -89,7 +106,6 @@ function generateList(jsonResults) {
 
         // Set its contents:
         item.appendChild(document.createTextNode(jsonResults[i].description));
-        item.appendChild(document.createTextNode(jsonResults[i].url));
 
         // Add it to the list:
         list.appendChild(item);
@@ -100,6 +116,70 @@ function generateList(jsonResults) {
 
 function clearSearchList() {
     document.getElementById('APIResponseList').innerHTML = "";
+}
+
+/* --- Recycle Database Methods --- */
+function generateGalleryOfLinKBoxes(jsonResults) {
+
+    var gallery = document.getElementById("LinkBoxGallery");
+
+    for (var i = 0; i < jsonResults.length; i++) {
+
+        // create a gallery element for the galleryOfLinkBoxes class
+        var galleryWrapper = document.createElement('div');
+        galleryWrapper.setAttribute("class", "galleryOfLinkBoxes");
+
+        // Create a link box
+        var itemBox = document.createElement('div');
+        itemBox.setAttribute("class", "linkBoxes");
+
+        var title = document.createElement("h3");
+        title.innerHTML = jsonResults[i].description;
+        itemBox.appendChild(title);
+
+        var img = document.createElement("img");
+        img.setAttribute("class", "databaseGalleryImages");
+        img.setAttribute("width", "600");
+        img.setAttribute("height", "400");
+        img.setAttribute("src", "http://greenroutine.appspot.com/images/glass_logo.png");
+        itemBox.appendChild(img);
+
+        var brk = document.createElement("br"); // for spacing
+        itemBox.append(brk);
+
+        var descr = document.createElement("p");
+        descr.innerHTML = "Learn more";
+        itemBox.append(descr);
+
+
+        galleryWrapper.appendChild(itemBox);
+        gallery.appendChild(galleryWrapper);
+    }
+}
+
+function getMaterialsByID(material_id) {
+
+    fetch(CORS_PREFIX+BASE_URL+'earth911.getMaterials?api_key='+API_KEY, {mode: 'cors'}).then( resp => {
+        return resp.json();
+    }).then(data => {
+
+        var response = data;
+        var results = response.result;
+
+        var matchingMaterials = [];
+        for (var i = 0; i < results.length; i++) {
+            if (results[i].family_ids != undefined) {
+                for (var j = 0; j < results[i].family_ids.length; j++) {
+                    if (results[i].family_ids[j] == material_id) {
+                        matchingMaterials.push(results[i]);
+                        break;
+                    }
+                }
+            }
+        }
+        console.log(matchingMaterials);
+        return matchingMaterials;
+    });
 }
 
 module.exports = convert;
