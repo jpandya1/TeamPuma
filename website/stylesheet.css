@@ -122,15 +122,15 @@
 	margin: 0 auto;
 }
 
-/*.databaseGalleryImages {
+.databaseGalleryImages {
 	width: 75%; /*sets image width within container*/
-	/*max-height: 200px;
+	max-height: 200px;
 	text-align: center;
 
 	display: block; /*these 3 lines help center the images inside each gallery*/
-	/*margin-left: auto;
+	margin-left: auto;
 	margin-right: auto;
-} */
+}
 
 .databaseLinkBoxes h3 {
 	text-align: center;

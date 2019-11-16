@@ -100,6 +100,10 @@ function getFamiliesOfTypeID(familyID) {
     RDQueryFetch(BASE_URL+'earth911.getFamilies?api_key='+API_KEY+'&family_type_id='+familyID);
 }
 
+function sortNumber(a, b) {
+  return a - b;
+}
+
 /* --- Search Page Methods --- */
 
 function generateList(jsonResults) {
@@ -227,7 +231,7 @@ function generateGalleryOfMatchingMaterials(jsonResults) {
         var response = data;
         var results = response.result;
 
-        console.log(jsonResults);
+        // console.log(jsonResults);
 
         var gallery = document.getElementById("LinkBoxGallery");
         gallery.innerHTML = "";
@@ -235,11 +239,13 @@ function generateGalleryOfMatchingMaterials(jsonResults) {
         // console.log(jsonResults);
 
         // for each of the matching items
-        for (var i = 0; i < jsonResults.length; i++) {
-
+        var items = jsonResults.split(',');
+        items.sort(sortNumber);
+        for (var i = 0; i < items.length; i++) {
             for (var j = 0; j < results.length; j++) {
-                if (results[j].material_id == jsonResults[i]) {
-
+                if (results[j].material_id == items[i]) {
+                    console.log(items);
+                    console.log("Name: " + results[j].description + ", id: " + results[j].material_id);
                     // create a gallery element for the galleryOfLinkBoxes class
                     var galleryWrapper = document.createElement('div');
                     galleryWrapper.setAttribute("class", "galleryOfLinkBoxes");
