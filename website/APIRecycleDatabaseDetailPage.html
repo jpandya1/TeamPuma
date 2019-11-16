@@ -4,10 +4,9 @@
         <meta charset="utf-8">
         <title>Recycle Database</title>
         <script type="text/javascript" src="./api/jsonparser.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <link rel="stylesheet" href="./stylesheet.css">
     </head>
-    <body onload="getFamilies()">
+    <body onload="generateGalleryOfMatchingMaterials('getMaterialsByID(8)')">
 
         <div id="navigationBanner">
             <ul>
@@ -27,14 +26,9 @@
             </div>
         </div>
 
-        <h1 id="databaseTitle">Welcome to the Recycle Database</h1>
-        <h2 id="databaseTitle">Choose a category</h2>
+        <h1 id="databaseTitle">Items in Category</h1>
 
         <div id="LinkBoxGallery">
-
-        </div>
-
-        <div id="DetailLinkBoxGallery">
 
         </div>
 
