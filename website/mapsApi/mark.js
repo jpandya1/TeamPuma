@@ -117,13 +117,9 @@ function clearSearchList() {
     document.getElementById('APIResponseList').innerHTML = "";
 }
 
-<<<<<<< HEAD
+
 function geocode() {
     var location = document.getElementById('searchFieldLocation').value;
-=======
-geocode = function() {
-    var location = document.getElementById('searchField').value;
->>>>>>> b49951ebd4d593a8b8236ed628cf372d3bb529de
     axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
             params: {
                 address: location,
@@ -161,9 +157,28 @@ geocode = function() {
 
 }
 
+function MapFetch(material) {
+    fetch(CORS_PREFIX+BASE_URL+'earth911.searchMaterials?api_key='+API_KEY+'&query='+material, {mode: 'cors'}).then( resp => {
+        return resp.json();
+    }).then(data => {
 
+        var response = data;
+        var results = response.result;
 
+        var material_ids = []
+        for (var i = 0; i < results.length; i++) {
+            material_ids.push(results[i].material_id);
+        }
 
+        for (var j = 0; j < material_ids.length; j++) {
+            url += prefix
+        }
+
+        var prefix = "&material_id[]=";
+
+        return material_ids;
+    });
+}
 
 var map;
 
@@ -182,12 +197,5 @@ function addMarker(prop) {
     });
 }
 
-<<<<<<< HEAD
-
-=======
-getList = function(){
-  return document.getElementById('APIResponseList');
-}
->>>>>>> b49951ebd4d593a8b8236ed628cf372d3bb529de
 
 module.exports = convert;
