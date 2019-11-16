@@ -7,7 +7,11 @@
     "test": "test"
   },
   "dependencies": {
-    "node-fetch": "^2.6.0"
+    "chai": "^4.2.0",
+    "es6-promise": "^4.2.8",
+    "isomorphic-fetch": "^2.2.1",
+    "node-fetch": "^2.6.0",
+    "node-fetch-polyfill": "^2.0.6"
   },
   "devDependencies": {
     "mocha": "^6.2.2"

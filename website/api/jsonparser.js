@@ -1,4 +1,7 @@
 let convert = {};
+//require('es6-promise').polyfill();
+//require('isomorphic-fetch');
+
 /*
 * https://talk.observablehq.com/t/httprequest-origin-null/121
 * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
@@ -14,10 +17,13 @@ API_KEY = 'c2ab03acf7e440d8';
 /*
 * Performs the HTTP Request using the (newer) fetch method
 */
+
 function queryFetch(url) {
-    fetch(CORS_PREFIX+url, {mode: 'cors'}).then( resp => {
+//    fetch(CORS_PREFIX+url, {mode: 'cors'}).then( resp => {
+    fetch(CORS_PREFIX+url, {mode: 'cors'}).then( function(resp){
         return resp.json();
-    }).then(data => {
+//    }).then(data => {
+    }).then(function(data) {
 
         var response = data;
         var results = response.result;
@@ -57,7 +63,6 @@ function RDQueryFetch(url) {
     });
 }
 
-
 /* --- Earth 911 API Calls --- */
 // Returns an array of all materials
 function getMaterials() {
@@ -65,7 +70,8 @@ function getMaterials() {
 }
 
 // Searches for materials matching keywords
-function searchMaterials(material) {
+//function searchMaterials(material) {
+searchMaterials = function(material){
     queryFetch(BASE_URL+'earth911.searchMaterials?api_key='+API_KEY+'&query='+material);
 }
 

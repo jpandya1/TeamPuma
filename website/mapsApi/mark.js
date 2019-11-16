@@ -1,4 +1,6 @@
 let convert = {};
+//require('es6-promise').polyfill();
+//require('isomorphic-fetch');
 /*
  * https://talk.observablehq.com/t/httprequest-origin-null/121
  * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
@@ -112,7 +114,7 @@ function clearSearchList() {
     document.getElementById('APIResponseList').innerHTML = "";
 }
 
-function geocode() {
+geocode = function() {
     var location = document.getElementById('searchField').value;
     axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
             params: {
@@ -165,6 +167,10 @@ function addMarker(prop) {
         position: prop.coords,
         map: map,
     });
+}
+
+getList = function(){
+  return document.getElementById('APIResponseList');
 }
 
 module.exports = convert;
