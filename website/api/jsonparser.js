@@ -41,7 +41,7 @@ function queryFetch(url) {
             document.getElementById("APIResponse").innerHTML = " ";
 
             // fill in the list with search results
-            // document.getElementById('APIResponseList').appendChild(generateList(results));
+            document.getElementById('APIResponseList').appendChild(generateList(results));
             console.log(results);
         }
 
