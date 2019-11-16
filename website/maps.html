@@ -7,12 +7,11 @@
     <link rel="stylesheet" href="./stylesheet.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./mapsApi/maps.css">
-    <script type="text/javascript" src="./mapsApi/mark.js"></script>
+    <script type="text/javascript" src="./mapsApi/markTest.js"></script>
     <script type="text/javascript" src="./api/jsonparser.js"></script>
 
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script type="text/javascript" src="./test/mapTest.js"></script>
     <title>Search Recyclable Items</title>
 
 </head>
@@ -48,11 +47,16 @@
             <form id="formLocation" style="display: block">
                 <h2 id="searchInstruction">Search for centers by location:</h2>
                 <input type="text" id="searchFieldLocation">
-                <button type="button" onclick="geocode(); search();">Search</button>
+                <input type="text" id="searchMaterialBox">
+                <button type="button" onclick="geocode(); ">Search</button>
             </form>
 
         </div>
         <div id="formatted-address"></div>
+        <div id="finalCall"></div>
+        <div id="test"></div>
+        <div id="testLat"> </div>
+        <div id="testLong"></div>
 
         <p id="APIResponse"></p>
 
