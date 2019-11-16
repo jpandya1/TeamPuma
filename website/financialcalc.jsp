@@ -168,14 +168,16 @@
 	else{
 		%>
 
-		<h1>Welcome to the Fin Calc</h1>
+		<h1>Welcome to the Financial Calculator</h1>
 
 		<p><a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
 
-		to update your calc!</p>
+		to update your stats!</p>
 		<%
 	}
 %>
-
+	<div id="bottomBanner">
+        <p>University of Texas at Austin (October 2019)   .</p>
+    </div>
 	</body>
 </html>
