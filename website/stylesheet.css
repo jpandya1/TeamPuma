@@ -82,7 +82,7 @@
 .linkBoxes {
 	border: 1px solid grey;
 	width: 300px;
-	height: 300px;
+	height: 350px;
 	margin: 0 auto;
 }
 
@@ -91,8 +91,8 @@
 }
 
 .linkBoxes img {
-	width: 75%; /*sets image width within container*/
-	height: auto; /*default height*/
+	/* width: 75%; /*sets image width within container*/
+	/* height: auto; /*default height*/
 	text-align: center;
 
 	display: block; /*these 3 lines help center the images inside each gallery*/
@@ -115,14 +115,44 @@
 
 /* splashpage gallery elements are above */
 
-.databaseGalleryImages {
+.databaseLinkBoxes {
+	border: 1px solid grey;
+	width: 300px;
+	height: 320px;
+	margin: 0 auto;
+}
+
+/*.databaseGalleryImages {
 	width: 75%; /*sets image width within container*/
-	max-height: 200px;
+	/*max-height: 200px;
 	text-align: center;
 
 	display: block; /*these 3 lines help center the images inside each gallery*/
+	/*margin-left: auto;
+	margin-right: auto;
+} */
+
+.databaseLinkBoxes h3 {
+	text-align: center;
+}
+
+.databaseLinkBoxes img {
+	display: block; /*these 3 lines help center the images inside each gallery*/
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.databaseLinkBoxes p {
+	font-size: 15px;
+	text-align: left;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.databaseLinkBoxes:hover {
+	border: 1px solid black;
 }
 
 /* recycle database gallery elements are above */
@@ -288,4 +318,32 @@ table, th, td {
 #searchField {
 }
 
+#APIResponseList ul {
+	padding-left: 0;
+	list-style-type: none;
+}
+
+#APIResponseList li {
+	border: 1px solid black;
+	padding: 10px;
+}
+
 /*Above are used in searchpage.html */
+
+.goBackButton {
+	background-color: #1c87c9;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+	cursor: pointer;
+	display: inline-block;
+	margin-bottom: 30px;
+	padding: 6px 12px;
+	border: 1px solid black;
+	margin-left: 30px;
+}
+
+.goBackButton a {
+	color: white;
+	text-decoration: none;
+}
