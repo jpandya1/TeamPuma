@@ -70,8 +70,7 @@ function getMaterials() {
 }
 
 // Searches for materials matching keywords
-//function searchMaterials(material) {
-searchMaterials = function(material){
+function searchMaterials(material) {
     queryFetch(BASE_URL+'earth911.searchMaterials?api_key='+API_KEY+'&query='+material);
 }
 

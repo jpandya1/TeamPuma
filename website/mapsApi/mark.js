@@ -157,9 +157,28 @@ function geocode() {
 
 }
 
+function MapFetch(material) {
+    fetch(CORS_PREFIX+BASE_URL+'earth911.searchMaterials?api_key='+API_KEY+'&query='+material, {mode: 'cors'}).then( resp => {
+        return resp.json();
+    }).then(data => {
 
+        var response = data;
+        var results = response.result;
 
+        var material_ids = []
+        for (var i = 0; i < results.length; i++) {
+            material_ids.push(results[i].material_id);
+        }
 
+        for (var j = 0; j < material_ids.length; j++) {
+            url += prefix
+        }
+
+        var prefix = "&material_id[]=";
+
+        return material_ids;
+    });
+}
 
 var map;
 
