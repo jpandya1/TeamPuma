@@ -1,4 +1,6 @@
 let convert = {};
+//require('es6-promise').polyfill();
+//require('isomorphic-fetch');
 /*
  * https://talk.observablehq.com/t/httprequest-origin-null/121
  * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
@@ -44,6 +46,8 @@ function queryLocationFetch(url) {
 
     });
 }
+
+
 
 function queryMapFetch(url) {
     fetch(CORS_PREFIX + url, {
@@ -92,6 +96,7 @@ function searchLocations(lat, long, maxDistance) {
 
 /* --- Search Page Methods --- */
 
+
 function generateLocationList(jsonResults) {
     // Create the list element:
     var list = document.createElement('ul');
@@ -112,8 +117,13 @@ function clearSearchList() {
     document.getElementById('APIResponseList').innerHTML = "";
 }
 
+<<<<<<< HEAD
 function geocode() {
+    var location = document.getElementById('searchFieldLocation').value;
+=======
+geocode = function() {
     var location = document.getElementById('searchField').value;
+>>>>>>> b49951ebd4d593a8b8236ed628cf372d3bb529de
     axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
             params: {
                 address: location,
@@ -141,6 +151,7 @@ function geocode() {
                 lat: lati,
                 lng: lngi
             })
+
             searchLocations(lati, lngi);
 
         })
@@ -149,6 +160,10 @@ function geocode() {
         });
 
 }
+
+
+
+
 
 var map;
 
@@ -166,5 +181,13 @@ function addMarker(prop) {
         map: map,
     });
 }
+
+<<<<<<< HEAD
+
+=======
+getList = function(){
+  return document.getElementById('APIResponseList');
+}
+>>>>>>> b49951ebd4d593a8b8236ed628cf372d3bb529de
 
 module.exports = convert;
