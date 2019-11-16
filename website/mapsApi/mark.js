@@ -45,6 +45,8 @@ function queryLocationFetch(url) {
     });
 }
 
+
+
 function queryMapFetch(url) {
     fetch(CORS_PREFIX + url, {
         mode: 'cors'
@@ -92,6 +94,7 @@ function searchLocations(lat, long, maxDistance) {
 
 /* --- Search Page Methods --- */
 
+
 function generateLocationList(jsonResults) {
     // Create the list element:
     var list = document.createElement('ul');
@@ -113,7 +116,7 @@ function clearSearchList() {
 }
 
 function geocode() {
-    var location = document.getElementById('searchField').value;
+    var location = document.getElementById('searchFieldLocation').value;
     axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
             params: {
                 address: location,
@@ -141,6 +144,7 @@ function geocode() {
                 lat: lati,
                 lng: lngi
             })
+
             searchLocations(lati, lngi);
 
         })
@@ -149,6 +153,10 @@ function geocode() {
         });
 
 }
+
+
+
+
 
 var map;
 
@@ -166,5 +174,7 @@ function addMarker(prop) {
         map: map,
     });
 }
+
+
 
 module.exports = convert;
