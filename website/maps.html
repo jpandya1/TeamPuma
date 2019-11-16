@@ -4,15 +4,79 @@
 <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./stylesheet.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
     <link rel="stylesheet" type="text/css" href="./mapsApi/maps.css">
+
     <script type="text/javascript" src="./mapsApi/markTest.js"></script>
     <script type="text/javascript" src="./api/jsonparser.js"></script>
-
-
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Search Recyclable Items</title>
+
+    <style>
+        #navigationBanner ul {
+    background-color: grey;
+    list-style-type: none; /*removes bullet points*/
+    overflow: hidden; /*overflow is clipped, but content is visible*/
+    padding: 0;
+    margin: 0;
+}
+
+#navigationBanner a {
+    color: white;
+    text-decoration: none; /*gets rid of link text underlines*/
+    text-align: center;
+    display: block; /*display element as a block*/
+    padding-top: 14px;
+    padding-bottom: 14px;
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+#navigationBanner a:hover {
+    color: black;
+    background-color: dimgrey;
+}
+
+#navigationBanner li {
+    float: left;
+}
+
+
+#titleBanner {
+    background-color: lightgreen;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 40px;
+    margin-bottom: 30px;
+    height: 130px;
+}
+
+#titleBannerImage img {
+    background-color: lightgreen;
+    float: left;
+    margin-right: 40px;
+}
+
+#titleBannerText {
+    font-weight: bold;
+    float: left;
+}
+
+#titleBannerText h1 {
+    color: green;
+    font-size: 40px;
+    padding: 0px;
+    margin: 0px;
+}
+
+#titleBannerText h2 {
+    color: black;
+    font-size: 20px;
+    padding: 0px;
+    margin-top: 10px;
+}
+
+    </style>
 
 </head>
 
@@ -38,7 +102,6 @@
       <p>Search Recycling centers by items!</p>
 -->
     <div id="leftSide">
-        <br>
         <p id="mapTitle" style="text-align: left">Use our map tool to search for recycling centers by items!</p>
 
         <div id="searchLocations">
@@ -46,17 +109,14 @@
 
             <form id="formLocation" style="display: block">
                 <h2 id="searchInstruction">Search for centers by location:</h2>
-                <input type="text" placeholder="Enter Address" id="searchFieldLocation">
+                <input type="text" placeholder="Enter location address" id="searchFieldLocation">
                 <input type="text" placeholder="Enter Material (Optional)" id="searchMaterialBox">
                 <button type="button" onclick="geocode(); ">Search</button>
             </form>
 
         </div>
         <div id="formatted-address"></div>
-        <div id="finalCall"></div>
-        <div id="test"></div>
-        <div id="testLat"> </div>
-        <div id="testLong"></div>
+
 
         <p id="APIResponse"></p>
 
@@ -66,7 +126,6 @@
 
 
     <div id="rightSide">
-        <input id="pac-input" class="controls" type="text" placeholder="Search Box">
         <div id="map"></div>
 
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1tYYqGdNtn_Re-u4X4ldatpcQ6sKoFsQ&callback=initMap">

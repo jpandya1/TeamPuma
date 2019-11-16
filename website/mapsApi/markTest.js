@@ -17,6 +17,8 @@ API_KEY = 'c2ab03acf7e440d8';
  * Performs the HTTP Request using the (newer) fetch method
  */
 
+
+
 function queryLocationFetch(url) {
     fetch(CORS_PREFIX + url, {
         mode: 'cors'
@@ -49,6 +51,8 @@ function queryLocationFetch(url) {
 
 
 
+
+
 function queryMapFetch(url) {
     fetch(CORS_PREFIX + url, {
         mode: 'cors'
@@ -63,28 +67,53 @@ function queryMapFetch(url) {
 
         } else {
             var count;
-            if (results.length < 40) {
+            if (results.length < 30) {
                 count = results.length;
             } else {
-                count = 40;
+                count = 30;
             }
 
             var markers = [];
+
+
             for (var i = 0; i < count; i++) {
                 markers.push({
                     coords: {
                         lat: results[i].latitude,
                         lng: results[i].longitude
-                    }
+                    },
+                    content: results[i].description
+
                 });
             }
+
+
             for (var i = 0; i < count; i++) {
                 addMarker(markers[i]);
             }
 
+
         }
 
     });
+}
+
+function addMarker(prop) {
+    var marker = new google.maps.Marker({
+        position: prop.coords,
+        map: map,
+    });
+    if(prop.content){
+        var infowindow = new google.maps.InfoWindow({
+            content: prop.content
+        });
+
+        marker.addListener('click', function(){
+            infowindow.open(marker.get('map'), marker);
+        });
+    }
+        
+    
 }
 
 /* --- Earth 911 API Calls --- */
@@ -150,6 +179,8 @@ function geocode() {
                 lng: lngi
             })
 
+
+
             MapFetch(material, lati, lngi);
 
             //'&material_id[]=60&material[]= 445'
@@ -196,11 +227,6 @@ function initMap() {
     });
 }
 
-function addMarker(prop) {
-    var marker = new google.maps.Marker({
-        position: prop.coords,
-        map: map,
-    });
-}
+
 
 
