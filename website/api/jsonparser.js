@@ -126,6 +126,25 @@ function clearSearchList() {
     document.getElementById('APIResponseList').innerHTML = "";
 }
 
+function createLinkBox() {
+    var itemBox = document.createElement('div');
+    itemBox.setAttribute("class", "linkBoxes");
+
+    var title = document.createElement("h3");
+
+    var brk = document.createElement("br"); // for spacing
+    var descr = document.createElement("p");
+
+    title.innerHTML = results[j].description;
+    descr.innerHTML = results[j].long_description;
+
+    itemBox.appendChild(title);
+    itemBox.append(brk);
+    itemBox.append(descr);
+
+    return itemBox;
+}
+
 /* --- Recycle Database Methods --- */
 function generateGalleryOfLinKBoxes(jsonResults) {
 
@@ -153,22 +172,7 @@ function generateGalleryOfLinKBoxes(jsonResults) {
         }
 
         // Create a link box
-        var itemBox = document.createElement('div');
-        itemBox.setAttribute("class", "linkBoxes");
-
-        var title = document.createElement("h3");
-        title.innerHTML = jsonResults[i].description;
-        itemBox.appendChild(title);
-
-        var img = document.createElement("img");
-        img.setAttribute("class", "databaseGalleryImages");
-        img.setAttribute("width", "600");
-        img.setAttribute("height", "400");
-        img.setAttribute("src", "http://greenroutine.appspot.com/images/glass_logo.png");
-        itemBox.appendChild(img);
-
-        var brk = document.createElement("br"); // for spacing
-        itemBox.append(brk);
+        var itemBox = createLinkBox();
 
         galleryWrapper.appendChild(itemBox);
         detailWrapper.appendChild(galleryWrapper);
@@ -250,27 +254,7 @@ function generateGalleryOfMatchingMaterials(jsonResults) {
                     galleryWrapper.setAttribute("class", "galleryOfLinkBoxes");
 
                     // Create a link box
-                    var itemBox = document.createElement('div');
-                    itemBox.setAttribute("class", "linkBoxes");
-
-                    var title = document.createElement("h3");
-
-                    var brk = document.createElement("br"); // for spacing
-                    var descr = document.createElement("p");
-
-                    title.innerHTML = results[j].description;
-                    descr.innerHTML = results[j].long_description;
-
-                    // var img = document.createElement("img");
-                    // img.setAttribute("class", "databaseGalleryImages");
-                    // img.setAttribute("width", "600");
-                    // img.setAttribute("height", "400");
-                    // img.setAttribute("src", "http://greenroutine.appspot.com/images/paint.jpg");
-
-                    itemBox.appendChild(title);
-                    // itemBox.appendChild(img);
-                    itemBox.append(brk);
-                    itemBox.append(descr);
+                    var itemBox = createLinkBox();
 
                     galleryWrapper.appendChild(itemBox);
                     gallery.appendChild(galleryWrapper);
