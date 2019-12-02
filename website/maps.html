@@ -16,11 +16,10 @@
     <style>
 
         #titleBanner {
-            height: 130px; /*100px from stylesheet is overwritten*/
+            height: 150px; /*100px from stylesheet is overwritten*/
         }
 
         #titleBannerText h1 {
-            font-size: 40px; /*50px from stylesheet is overwritten*/
             font-weight: bold;
             font-family: serif;
         }
@@ -54,13 +53,13 @@
     </div>
 
     <div id="leftSide">
-        <p id="mapTitle" style="text-align: left">Use our map tool to search for recycling centers by items!</p>
+        <p id="mapTitle" style="text-align: left">Use this map tool to find recycling centers!</p>
 
         <div id="searchLocations">
 
 
             <form id="formLocation" style="display: block">
-                <h2 id="searchInstruction">Search for centers by location:</h2>
+                <h2 id="searchInstruction">Search by location and material:</h2>
                 <input type="text" placeholder="Enter location address" id="searchFieldLocation">
                 <input type="text" placeholder="Enter Material (Optional)" id="searchMaterialBox">
                 <button type="button" onclick="geocode(); ">Search</button>
