@@ -1,4 +1,4 @@
-/* title & navigation banner elements below are used for all pages */
+/* Below for all pages: title & navigation banner elements */
 
 #navigationBanner ul {
 	background-color: grey;
@@ -10,9 +10,9 @@
 
 #navigationBanner a {
 	color: white;
-	text-decoration: none; /*gets rid of link text underlines*/
+	text-decoration: none; /*remove link text underlines*/
 	text-align: center;
-	display: block; /*display element as a block*/
+	display: block;
 	padding-top: 14px;
 	padding-bottom: 14px;
 	padding-right: 16px;
@@ -27,7 +27,6 @@
 #navigationBanner li {
 	float: left;
 }
-
 
 #titleBanner {
 	background-color: lightgreen;
@@ -63,9 +62,9 @@
 	margin-top: 10px;
 }
 
-/* title & navigation banner elements above are used for all pages */
+/* Above for all pages: title & navigation banner elements */
 
-/* splashpage & recycle database page gallery elements are below */
+/* Below for splashpage & database gallery elements */
 
 .galleryOfLinkBoxes {
 	padding-bottom: 30px;
@@ -76,7 +75,7 @@
 
 .galleryOfLinkBoxes a {
 	color: black;
-	text-decoration: none; /*gets rid of link text underlines*/
+	text-decoration: none; /*remove link text underlines*/
 }
 
 .linkBoxes {
@@ -113,7 +112,7 @@
 	border: 1px solid black;
 }
 
-/* splashpage gallery elements are above */
+/* splashpage gallery elements are above but database gallery elements are continued below*/
 
 .databaseLinkBoxes {
 	border: 1px solid grey;
@@ -155,20 +154,17 @@
 	border: 1px solid black;
 }
 
-/* recycle database gallery elements are above */
+/* Above for database gallery elements */
 
-/* more recycle database elements below */
+/* Below for more database elements */
 
 #databaseTitle {
 	margin-left: 30px;
 }
 
-/* #databaseSubTitle {
-	margin-left: 30px;
-	margin-bottom: 30px;
-} */
+/* Above for more database elements */
 
-/* more recycle database elements above */
+/* Below for all pages: bottom banner */
 
 #bottomBanner p {
 	color: black;
@@ -181,7 +177,9 @@
 	width: 100%;
 }
 
-/* about page elements are below*/
+/* Above for all pages: bottom banner */
+
+/* Below for about.html */
 
 #sectionTitle {
 	font-size: 30px;
@@ -207,9 +205,9 @@
 	margin-left: 50px;
 }
 
-/* about page elements are above*/
+/* Above for about.html */
 
-/* guide page elements are below*/
+/* Below for guide.html */
 
 #guideTitle {
 	text-align: center;
@@ -242,9 +240,9 @@
 	text-align: center;
 }
 
-/* guide page elements are above*/
+/* Above for guide.html */
 
-/* Below are used in financialcalc.html */
+/* Below for financialcalc.jsp */
 
 #calcInput {
 	float: left;
@@ -288,7 +286,9 @@
 	margin-bottom: 5px;
 }
 
-/* Above are used in the financialcalc.html */
+/* Above for financialCalc.jsp */
+
+/* Below for map.html */
 
 #map {
     height: 100%;
@@ -299,12 +299,22 @@
 	max-height: none;
 }
 
-table, th, td {
-	border: 1px solid black;
-	padding: 10px;
+#mapTitle {
+	font-size: 24px;
+	font-weight: bold;
+	color: black;
+	margin-left: 10px;
 }
 
-/* Below are used in searchpage.html */
+#searchInstruction {
+	font-size: 24px;
+	font-weight: bold;
+	color: green;
+}
+
+/* Above for map.html */
+
+/* Below for searchpage.html */
 
 #searchArea {
 	display: block;
@@ -328,7 +338,7 @@ table, th, td {
 	padding: 10px;
 }
 
-/*Above are used in searchpage.html */
+/*Above for searchpage.html */
 
 .goBackButton {
 	background-color: #1c87c9;
@@ -346,4 +356,9 @@ table, th, td {
 .goBackButton a {
 	color: white;
 	text-decoration: none;
+}
+
+table, th, td {
+	border: 1px solid black;
+	padding: 10px;
 }

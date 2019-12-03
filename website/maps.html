@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
     <link rel="stylesheet" type="text/css" href="./mapsApi/maps.css">
+    <link rel="stylesheet" href="stylesheet.css">
 
     <script type="text/javascript" src="./mapsApi/markTest.js"></script>
     <script type="text/javascript" src="./api/jsonparser.js"></script>
@@ -13,68 +14,20 @@
     <title>Search Recyclable Items</title>
 
     <style>
-        #navigationBanner ul {
-    background-color: grey;
-    list-style-type: none; /*removes bullet points*/
-    overflow: hidden; /*overflow is clipped, but content is visible*/
-    padding: 0;
-    margin: 0;
-}
 
-#navigationBanner a {
-    color: white;
-    text-decoration: none; /*gets rid of link text underlines*/
-    text-align: center;
-    display: block; /*display element as a block*/
-    padding-top: 14px;
-    padding-bottom: 14px;
-    padding-right: 16px;
-    padding-left: 16px;
-}
+        #titleBanner {
+            height: 150px; /*100px from stylesheet is overwritten*/
+        }
 
-#navigationBanner a:hover {
-    color: black;
-    background-color: dimgrey;
-}
+        #titleBannerText h1 {
+            font-weight: bold;
+            font-family: serif;
+        }
 
-#navigationBanner li {
-    float: left;
-}
-
-
-#titleBanner {
-    background-color: lightgreen;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    padding-left: 40px;
-    margin-bottom: 30px;
-    height: 130px;
-}
-
-#titleBannerImage img {
-    background-color: lightgreen;
-    float: left;
-    margin-right: 40px;
-}
-
-#titleBannerText {
-    font-weight: bold;
-    float: left;
-}
-
-#titleBannerText h1 {
-    color: green;
-    font-size: 40px;
-    padding: 0px;
-    margin: 0px;
-}
-
-#titleBannerText h2 {
-    color: black;
-    font-size: 20px;
-    padding: 0px;
-    margin-top: 10px;
-}
+        #titleBannerText h2 {
+            font-weight: bold;
+            font-family: serif;
+        }
 
     </style>
 
@@ -98,17 +51,15 @@
             <h2>Empowering users to recycle responsibly</h2>
         </div>
     </div>
-    <!--
-      <p>Search Recycling centers by items!</p>
--->
+
     <div id="leftSide">
-        <p id="mapTitle" style="text-align: left">Use our map tool to search for recycling centers by items!</p>
+        <p id="mapTitle" style="text-align: left">Use this map tool to find recycling centers!</p>
 
         <div id="searchLocations">
 
 
             <form id="formLocation" style="display: block">
-                <h2 id="searchInstruction">Search for centers by location:</h2>
+                <h2 id="searchInstruction">Search by location and material:</h2>
                 <input type="text" placeholder="Enter location address" id="searchFieldLocation">
                 <input type="text" placeholder="Enter Material (Optional)" id="searchMaterialBox">
                 <button type="button" onclick="geocode(); ">Search</button>
