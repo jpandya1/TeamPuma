@@ -119,7 +119,7 @@ function clearSearchList() {
     document.getElementById('APIResponseList').innerHTML = "";
 }
 
-function createLinkBox() {
+function createLinkBox(result) {
     var itemBox = document.createElement('div');
     itemBox.setAttribute("class", "linkBoxes");
 
@@ -128,8 +128,8 @@ function createLinkBox() {
     var brk = document.createElement("br"); // for spacing
     var descr = document.createElement("p");
 
-    title.innerHTML = results[j].description;
-    descr.innerHTML = results[j].long_description;
+    title.innerHTML = result.description;
+    descr.innerHTML = result.long_description;
 
     itemBox.appendChild(title);
     itemBox.append(brk);
@@ -165,7 +165,7 @@ function generateGalleryOfLinKBoxes(jsonResults) {
         }
 
         // Create a link box
-        var itemBox = createLinkBox();
+        var itemBox = createLinkBox(jsonResults[i]);
 
         galleryWrapper.appendChild(itemBox);
         detailWrapper.appendChild(galleryWrapper);
@@ -247,7 +247,7 @@ function generateGalleryOfMatchingMaterials(jsonResults) {
                     galleryWrapper.setAttribute("class", "galleryOfLinkBoxes");
 
                     // Create a link box
-                    var itemBox = createLinkBox();
+                    var itemBox = createLinkBox(results[j]);
 
                     galleryWrapper.appendChild(itemBox);
                     gallery.appendChild(galleryWrapper);
