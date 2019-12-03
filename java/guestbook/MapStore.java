@@ -11,13 +11,25 @@ import com.googlecode.objectify.annotation.Index;
 
 @Entity
 public class MapStore {
-
+		private volatile static MapStore mapStore;
 	  	@Id Long id;
-	    @Index static Map<String, List<DBentry>> map = new HashMap<String, List<DBentry>>();
+	  	@Index static Map<String, List<DBentry>> map = new HashMap<String, List<DBentry>>();
 	    private MapStore() {}
 	    public MapStore(String name) {
 	    	map = new HashMap<String, List<DBentry>>();
 	    }
+	    public static MapStore getInstance() {
+	    	if(mapStore == null) {
+	    		synchronized(MapStore.class) {
+	    			if(mapStore == null) {
+	    				mapStore = new MapStore();
+	    				map = new HashMap<String, List<DBentry>>();
+	    			}
+	    		}
+	    	}
+	    	return mapStore;
+	    }
+	    
 	    public List<DBentry> getByUser(String user) {
 	    	return map.getOrDefault(user, null);
 	    }
