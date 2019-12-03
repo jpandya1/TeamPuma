@@ -124,9 +124,10 @@
 						pageContext.setAttribute("valuePer", entry.getValue());
 						//pageContext.setAttribute("value", entry.getValue());
 						//idk if this works
-						BigDecimal bd = new BigDecimal(entry.getValue() * entry.getQuantity());
-						bd = bd.round(new MathContext(3));
-						Double rounded = bd.doubleValue();
+						//BigDecimal bd = new BigDecimal(entry.getValue() * entry.getQuantity());
+						//bd = bd.round(new MathContext(3));
+						//Double rounded = bd.doubleValue();
+						Double rounded = Double.parseDouble(entry.doBehavior());
 						pageContext.setAttribute("value", rounded);
 						//TODO: add $/lb
 						//TODO: add total value

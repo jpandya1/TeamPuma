@@ -17,7 +17,6 @@ public class CFentry extends Entry{
     Double carbon;
     String category;
     Double emission;
-    CFBehavior cf = new CFBehavior();
 
     private CFentry() {}
     public CFentry(String item, Double carbon, String category, Double quantity, Double emission) {
