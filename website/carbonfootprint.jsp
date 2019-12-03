@@ -170,9 +170,10 @@
 		            pageContext.setAttribute("greeting_quantity",entry.getQuantity());
 		            pageContext.setAttribute("greeting_emission",entry.getEmission());                 
 					
-					String pattern = "yyyy-MM-dd";
-					SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-					String date = simpleDateFormat.format(entry.getDate());
+					//String pattern = "yyyy-MM-dd";
+					//SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+					//String date = simpleDateFormat.format(entry.getDate());
+					String date = entry.doBehavior();
 					pageContext.setAttribute("greeting_Date", date);
 					total += entry.getEmission();
 						//TODO: replace buttons below

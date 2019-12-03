@@ -1,5 +1,6 @@
 package guestbook;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -12,13 +13,11 @@ import com.googlecode.objectify.annotation.Parent;
 
 
 @Entity
-public class CFentry{
-    String item;
+public class CFentry extends Entry{
     Double carbon;
     String category;
-    Double quantity;
     Double emission;
-    Date date;
+
     private CFentry() {}
     public CFentry(String item, Double carbon, String category, Double quantity, Double emission) {
         this.item = item;
@@ -27,6 +26,7 @@ public class CFentry{
         this.quantity = quantity;
         this.emission = emission;
         this.date = new Date();
+        behavior = new CFBehavior();
     }
     public String getItem() {
         return item;
@@ -42,8 +42,5 @@ public class CFentry{
     }
     public Double getEmission() {
     	return emission;
-    }
-    public Date getDate() {
-    	return date;
     }
 }
