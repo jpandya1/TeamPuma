@@ -11,13 +11,27 @@ import com.googlecode.objectify.annotation.Index;
 
 @Entity
 public class CarbMap {
-
+		private volatile static CarbMap carbMap;
 	  	@Id Long id;
 	    @Index static Map<String, List<CFentry>> map = new HashMap<String, List<CFentry>>();
 	    private CarbMap() {}
+	    /*
 	    public CarbMap(String name) {
 	    	map = new HashMap<String, List<CFentry>>();
+	    }*/
+	    
+	    public static CarbMap getInstance() {
+	    	if(carbMap == null) {
+	    		synchronized(CarbMap.class) {
+	    			if(carbMap == null) {
+	    				carbMap = new CarbMap();
+	    				map = new HashMap<String, List<CFentry>>();
+	    			}
+	    		}
+	    	}
+	    	return carbMap;
 	    }
+	    
 	    public List<CFentry> getByUser(String user) {
 	    	return map.getOrDefault(user, null);
 	    }
