@@ -133,7 +133,10 @@ function createLinkBox(result) {
 
     itemBox.appendChild(title);
     itemBox.append(brk);
-    itemBox.append(descr);
+
+    if (descr.innerHTML != 'undefined') {
+        itemBox.append(descr);
+    }
 
     return itemBox;
 }
