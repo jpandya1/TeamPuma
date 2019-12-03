@@ -255,24 +255,6 @@ to create you own blog posts!</p>
 
 
 
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- partial -->
     <script src="./script.js"></script>
     <script>
@@ -290,9 +272,6 @@ to create you own blog posts!</p>
             data.population.push(table.rows[i].cells[4].innerText)
             data.area.push(table.rows[i].cells[2].innerText)
         }
-
-
-
 
         var canvasP = document.getElementById("pieChart")
         var ctxP = canvasP.getContext('2d')
@@ -315,105 +294,7 @@ to create you own blog posts!</p>
             }
         });
 
-        function updateChart(){
-            chart.data.labels = data.labels;
-            chart.data.datasets[0].data = data.population;
-            chart.update();
-        };
-
-
-
-            function edit_row(no) {
-            document.getElementById("edit_button" + no).style.display = "none";
-            document.getElementById("save_button" + no).style.display = "inline";
-
-            var name = document.getElementById("name_row" + no);
-            var country = document.getElementById("country_row" + no);
-            var age = document.getElementById("age_row" + no);
-
-            var name_data = name.innerHTML;
-            var country_data = country.innerHTML;
-            var age_data = age.innerHTML;
-
-            name.innerHTML = "<input type='text' id='name_text" + no + "' value='" + name_data + "'>";
-            country.innerHTML = "<input type='text' id='country_text" + no + "' value='" + country_data + "'>";
-            age.innerHTML = "<input type='text' id='age_text" + no + "' value='" + age_data + "'>";
-
-
-        }
-
-        function save_row(no) {
-            var name_val = document.getElementById("name_text" + no).value;
-            var country_val = document.getElementById("country_text" + no).value;
-            var age_val = document.getElementById("age_text" + no).value;
-
-            document.getElementById("name_row" + no).innerHTML = name_val;
-            document.getElementById("country_row" + no).innerHTML = country_val;
-            document.getElementById("age_row" + no).innerHTML = age_val;
-
-            document.getElementById("edit_button" + no).style.display = "inline";
-            document.getElementById("save_button" + no).style.display = "none";
-
-            data.labels[no-1] = name_val;
-            data.population[no-1] = country_val;
-            data.area[no-1] = age_val;
-            updateChart();
-
-
-
-        }
-
-        function delete_row(no) {
-            document.getElementById("row" + no + "").outerHTML = "";
-            data.labels.splice(no-1,1);
-            data.population.splice(no-1,1);
-            data.area.splice(no-1,1);
-            updateChart();
-        }
-
-        function add_row() {
-            var new_name = document.getElementById("new_name").value;
-            var new_country = document.getElementById("new_country").value;
-            var new_age = document.getElementById("new_age").value;
-            var new_quantity = document.getElementById("new_quantity").value;
-            var new_emiss = new_country * new_quantity;
-            var new_date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
-
-            var table = document.getElementById("data_table");
-            var table_len = (table.rows.length) - 1;
-            var row = table.insertRow(table_len).outerHTML = "<tr id='row" + table_len + "'><td id='name_row" + table_len + "'>" + new_name + "</td><td id='country_row" + table_len + "'>" + new_country + "</td><td id='age_row" + table_len + "'>" + new_age + "</td><td id='quantity_row" + table_len + "'>" + new_quantity + "</td><td id='emiss_row" + table_len + "'>" + new_emiss +  "</td><td id='date_row" + table_len + "'>" + new_date + "</td><td><input type='button' id='edit_button" + table_len + "' value='Edit' class='edit' onclick='edit_row(" + table_len + ")'> <input type='button' id='save_button" + table_len + "' value='Save' style='display: none' class='line save' onclick='save_row(" + table_len + ")'> <input type='button' value='Delete' class='delete' onclick='delete_row(" + table_len + ")'></td></tr>";
-
-
-            data.labels.push(new_name);
-            data.population.push(new_emiss);
-            data.area.push(new_age);
-
-            document.getElementById("new_name").value = "";
-            document.getElementById("new_country").value = "";
-            document.getElementById("new_age").value = "";
-        }
-        function getDate(){
-            var date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
-            document.getElementById("new_date").innerHTML = date;
-
-        }
-        function totalEmission(){
-            var new_country = document.getElementById("new_country").value;
-            var new_quantity = document.getElementById("new_quantity").value;
-            var new_emiss = new_country * new_quantity;
-            document.getElementById("new_emiss").innerHTML = new_emiss;
-        }
-
-        setInterval(getDate(), 5000);
-        setInterval(totalEmission(), 500);
-
 </script>
-
-
-
-
-
-
 
     </body>
 </html>
