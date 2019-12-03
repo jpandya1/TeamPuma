@@ -12,6 +12,18 @@
 
 </head>
 
+<script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+</script>
+<script>
+    $(function(){
+        $("#header").load("header.html"); //imports navigation and title banner
+        $("#footer").load("footer.html"); //imports bottom banner
+    });
+</script>
+
 <body>
     <!--
       This page is the "About" page of our website
@@ -30,23 +42,7 @@
         - Tools: tools used, describe their use
         - Link to Github repository
     -->
-    <div id="navigationBanner">
-        <ul>
-            <li><a href="./splashpage.html" target="_self">Home</a></li>
-            <li><a href="./about.html" target="_self">About</a></li>
-            <li><a href="./searchpage.html">Search</a></li>
-        </ul>
-    </div>
-
-    <div id="titleBanner">
-        <div id="titleBannerImage">
-            <img src="images/recycle_image1.png" alt="image0" height="100">
-        </div>
-        <div id="titleBannerText">
-            <h1>Green Routine</h1>
-            <h2>Empowering users to recycle responsibly</h2>
-        </div>
-    </div>
+    <div id="header"></div>
 
     <div id="sectionTitle"><u>Welcome to our About Page</u></div>
     <br>
@@ -205,6 +201,10 @@
     <br>
     <div id="subTitle"><u>Team Puma Github Link</u></div>
     The Team Puma Githib Repository can be found at: <a href="https://github.com/jpandya1/TeamPuma">https://github.com/jpandya1/TeamPuma</a>
+
+    <br>
+    <br>
+    <div id="footer"></div>
 
     <script type="text/javascript">
         var HttpClient = function() {

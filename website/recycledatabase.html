@@ -5,28 +5,25 @@
         <title>Recycle Database</title>
         <link rel="stylesheet" href="./stylesheet.css">
     </head>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous">
+    </script>
+    <script>
+      $(function(){
+      $("#header").load("header.html"); //imports navigation and title banner
+      $("#footer").load("footer.html"); //imports bottom banner
+    });
+  </script>
+
     <body>
-
-        <div id="navigationBanner">
-            <ul>
-                <li><a href="./splashpage.html" target="_self">Home</a></li>
-                <li><a href="./about.html" target="_self">About</a></li>
-    			<li><a href="./searchpage.html">Search</a></li>
-            </ul>
-        </div>
-
-    <div id="titleBanner">
-        <div id="titleBannerImage">
-            <img src="images/recycle_image1.png" alt="image0" height="100">
-        </div>
-        <div id="titleBannerText">
-            <h1>Green Routine</h1>
-            <h2>Empowering users to recycle responsibly</h2>
-        </div>
-    </div>
+      <div id="header"></div>
 
         <h1 id="databaseTitle">Welcome to the Recycle Database</h1>
-        <!-- <p id="databaseSubTitle">Search the database by category</p> -->
+        <h2 id="databaseSubtitle">Search the database by category:</h2>
+        <br>
 
         <div class="galleryOfLinkBoxes">
       		<a href="./recycleItems/glass.html" target="_self">
@@ -89,6 +86,8 @@
       			</div>
       		</a>
       	</div>
+
+        <div id="footer"></div>
 
     </body>
 </html>
