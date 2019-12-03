@@ -15,10 +15,10 @@ public class CarbMap {
 	  	@Id Long id;
 	    @Index static Map<String, List<CFentry>> map = new HashMap<String, List<CFentry>>();
 	    private CarbMap() {}
-	    /*
+	    
 	    public CarbMap(String name) {
 	    	map = new HashMap<String, List<CFentry>>();
-	    }*/
+	    }
 	    
 	    public static CarbMap getInstance() {
 	    	if(carbMap == null) {

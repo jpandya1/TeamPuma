@@ -15,9 +15,9 @@ public class MapStore {
 	  	@Id Long id;
 	  	@Index static Map<String, List<DBentry>> map = new HashMap<String, List<DBentry>>();
 	    private MapStore() {}
-	    /*public MapStore(String name) {
+	    public MapStore(String name) {
 	    	map = new HashMap<String, List<DBentry>>();
-	    }*/
+	    }
 	    public static MapStore getInstance() {
 	    	if(mapStore == null) {
 	    		synchronized(MapStore.class) {
