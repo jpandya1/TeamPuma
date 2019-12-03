@@ -14,43 +14,37 @@
     <title>Search Recyclable Items</title>
 
     <style>
-
         #titleBanner {
             height: 150px; /*100px from stylesheet is overwritten*/
         }
-
         #titleBannerText h1 {
             font-weight: bold;
             font-family: serif;
         }
-
         #titleBannerText h2 {
             font-weight: bold;
             font-family: serif;
         }
-
+        #bottomBanner p {
+            margin-top: 950px;
+        }
     </style>
-
 </head>
 
-<body>
-    <div id="navigationBanner">
-        <ul>
-            <li><a href="./splashpage.html" target="_self">Home</a></li>
-            <li><a href="./about.html" target="_self">About</a></li>
-            <li><a href="./searchpage.html">Search</a></li>
-        </ul>
-    </div>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+</script>
+<script>
+    $(function(){
+        $("#header").load("header.html"); //imports navigation and title banner
+        $("#footer").load("footer.html"); //imports bottom banner
+    });
+</script>
 
-    <div id="titleBanner">
-        <div id="titleBannerImage">
-            <img src="images/recycle_image1.png" alt="image0" height="100">
-        </div>
-        <div id="titleBannerText">
-            <h1>Green Routine</h1>
-            <h2>Empowering users to recycle responsibly</h2>
-        </div>
-    </div>
+<body>
+    <div id="header"></div>
 
     <div id="leftSide">
         <p id="mapTitle" style="text-align: left">Use this map tool to find recycling centers!</p>
@@ -84,9 +78,8 @@
 
     </div>
 
-    <footer id="bottomBanner">
-        <p>University of Texas at Austin (October 2019) .</p>
-    </footer>
+    <br>
+    <div id="footer"></div>
 
 </body>
 
