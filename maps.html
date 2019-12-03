@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+    <link rel="stylesheet" type="text/css" href="./mapsApi/maps.css">
+    <link rel="stylesheet" href="stylesheet.css">
+
+    <script type="text/javascript" src="./mapsApi/markTest.js"></script>
+    <script type="text/javascript" src="./api/jsonparser.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Search Recyclable Items</title>
+
+    <style>
+        #titleBanner {
+            height: 150px; /*100px from stylesheet is overwritten*/
+        }
+        #titleBannerText h1 {
+            font-weight: bold;
+            font-family: serif;
+        }
+        #titleBannerText h2 {
+            font-weight: bold;
+            font-family: serif;
+        }
+        #bottomBanner p {
+            margin-top: 950px;
+        }
+    </style>
+</head>
+
+<script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+</script>
+<script>
+    $(function(){
+        $("#header").load("header.html"); //imports navigation and title banner
+        $("#footer").load("footer.html"); //imports bottom banner
+    });
+</script>
+
+<body>
+    <div id="header"></div>
+
+    <div id="leftSide">
+        <p id="mapTitle" style="text-align: left">Use this map tool to find recycling centers!</p>
+
+        <div id="searchLocations">
+
+
+            <form id="formLocation" style="display: block">
+                <h2 id="searchInstruction">Search by location and material:</h2>
+                <input type="text" placeholder="Enter location address" id="searchFieldLocation">
+                <input type="text" placeholder="Enter Material (Optional)" id="searchMaterialBox">
+                <button type="button" onclick="geocode(); ">Search</button>
+            </form>
+
+        </div>
+        <div id="formatted-address"></div>
+
+
+        <p id="APIResponse"></p>
+
+        <div id="APIResponseList"></div>
+
+    </div>
+
+
+    <div id="rightSide">
+        <div id="map"></div>
+
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1tYYqGdNtn_Re-u4X4ldatpcQ6sKoFsQ&callback=initMap">
+        </script>
+
+    </div>
+
+    <br>
+    <div id="footer"></div>
+
+</body>
+
+</html>
